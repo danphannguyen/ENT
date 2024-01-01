@@ -1,3 +1,11 @@
+
+/* ============== FONT ============== */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+
+/* ============== GLOBAL ============== */
 *,
 *::after,
 *::before {
@@ -14,16 +22,13 @@ body {
 
   background-color: var(--clr-background) !important;
   color: var(--clr-text) !important;
-  /* emule du contenu */
-  height: 300vh;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 
 a {
-  font-family: "satoshi", 'DM Sans', sans-serif;
   text-decoration: none !important;
 }
 
@@ -44,24 +49,33 @@ p {
   flex-direction: column;
 }
 
+/* ============== ROOT ============== */
+
+:root {
+  --clr-background: #DCDCDC;
+  --clr-forground: #fdfdfd;
+  --clr-text: #232323;
+}
+
+
 /* ============== NAVBAR ============== */
 
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 2rem;
-    background-color: #D8DAD3;
-    padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+  background-color: #D8DAD3;
+  padding: 1rem 2rem;
 }
 
 nav ul {
-    display: flex;
-    gap: 4rem;
-    list-style: none;
-    align-items: center;
-    justify-content: end;
-    margin: 0;
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+  align-items: center;
+  justify-content: end;
+  margin: 0;
 }
 
 #profile {
@@ -70,13 +84,135 @@ nav ul {
 }
 
 #profile img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }
 
 .disconnect {
   border: none;
   background-color: rgb(196, 45, 45) !important;
   color: white !important;
+}
+
+/* ============================================ */
+/* ============== CONNEXION PAGE ============== */
+/* ============================================ */
+
+#headerConnexion {
+  position: fixed;
+  top: 0;
+  height: 12vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 10px;
+  background-color: var(--clr-forground);
+}
+
+#headerConnexion img {
+  width: fit-content;
+  height: 48px;
+  filter: invert(1);
+}
+
+#sectionConnexion {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+#sectionConnexion h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#containerConnexion {
+  border-radius: 16px;
+  background-color: var(--clr-forground);
+  gap: 2rem;
+  padding: 2rem;
+  width: 30vw;
+}
+
+#containerConnexion div input {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+}
+
+#containerConnexion div input:focus {
+  outline: none;
+}
+
+#formConnexion {
+  width: 100%;
+  gap: 2rem;
+}
+
+.inputFormConnexion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1.5px solid var(--clr-text);
+  border-radius: 10px;
+  padding: 12px 20px;
+  overflow: hidden;
+}
+
+#submitContainerConnexion input {
+  width: 100%;
+  border: 1.5px solid var(--clr-text) !important;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background-color: var(--clr-text);
+  color: var(--clr-forground);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+#submitContainerConnexion input:hover {
+  cursor: pointer;
+  background-color: var(--clr-forground);
+  color: var(--clr-text);
+}
+
+#submitContainerConnexion a{
+  color: var(--clr-text);
+  font-family: 'Inter', sans-serif;
+  text-decoration: underline !important;
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+#eyeButton {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background-color: var(--clr-text);
+}
+
+#eyeButton img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#eyeButton:hover {
+  cursor: pointer;
 }

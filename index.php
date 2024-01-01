@@ -53,23 +53,52 @@ if (isset($_POST['action'])) {
 
 <body>
     <nav>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Archives</a></li>
-            <?php
-            // Button de connexion si la var de session ma!l n'existe pas
-            if (!isset($_SESSION['id'])) {
-                echo '
-                <li>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-                        Connexion
-                    </button>
-                </li>
-                ';
-            }
 
-            ?>
-        </ul>
+        <a href="#">
+            <div>
+                <img src="" alt="">
+                <span>Accueil</span>
+            </div>
+        </a>
+
+        <a href="#">
+            <div>
+                <img src="" alt="">
+                <span>Dashboard</span>
+            </div>
+        </a>
+
+        <a href="#">
+            <div>
+                <img src="" alt="">
+                <span>Calendrier</span>
+            </div>
+        </a>
+
+        <a href="#">
+            <div>
+                <img src="" alt="">
+                <span>Cours</span>
+            </div>
+        </a>
+
+        <a href="#">
+            <div>
+                <img src="" alt="">
+                <span>Chat</span>
+            </div>
+        </a>
+        <?php
+        // Button de connexion si la var de session ma!l n'existe pas
+        if (!isset($_SESSION['id'])) {
+            echo '
+                <button type="button" data-bs-toggle="modal" data-bs-target="#connexionModalToggle">
+                    Connexion
+                </button>
+                ';
+        }
+
+        ?>
         <?php
 
         //  button profil si la var de session mail existe
@@ -84,11 +113,11 @@ if (isset($_POST['action'])) {
     </nav>
 
     <!-- Modal connexion -->
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="connexionModalToggle" aria-hidden="true" aria-labelledby="connexionModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Connectez vous</h1>
+                    <h1 class="modal-title fs-5" id="connexionModalToggleLabel">Connectez vous</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -104,7 +133,7 @@ if (isset($_POST['action'])) {
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+                    <button class="btn btn-primary" data-bs-target="#inscriptionModalToggle" data-bs-toggle="modal">
                         S'inscrire
                     </button>
                 </div>
@@ -113,11 +142,11 @@ if (isset($_POST['action'])) {
     </div>
 
     <!-- Modal inscription -->
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal fade" id="inscriptionModalToggle" aria-hidden="true" aria-labelledby="inscriptionModalToggle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Inscription</h1>
+                    <h1 class="modal-title fs-5" id="inscriptionModalToggle">Inscription</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
