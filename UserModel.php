@@ -16,21 +16,7 @@ function connexion($mail, $password)
             return "Mauvais mot de passe";
         }
     } else {
-        return "Mauvaise adresse mail";
-    }
-}
-
-// Fonction d'inscription
-function register($mail, $password, $firstname, $lastname)
-{
-    if (isMailExist($mail)) {
-        return "L adresse mail existe déjà";
-    } else {
-        if (addUser($mail, $password, $firstname, $lastname)) {
-            return 'Inscription réussie';
-        } else {
-            return 'Erreur lors de l inscription';
-        }
+        return "L'adresse mail n'existe pas";
     }
 }
 
@@ -81,6 +67,26 @@ function bindUserInfo($mail)
     $_SESSION['nom'] = $result[0]['nom_user'];
 
     return isset($_SESSION['id'], $_SESSION['login'], $_SESSION['prenom'], $_SESSION['nom']);
+}
+
+
+// ===================================================================================================
+// ======================================= Fonction Register =========================================
+// ===================================================================================================
+
+
+// Fonction d'inscription
+function register($mail, $password, $firstname, $lastname)
+{
+    if (isMailExist($mail)) {
+        return "L adresse mail existe déjà";
+    } else {
+        if (addUser($mail, $password, $firstname, $lastname)) {
+            return 'Inscription réussie';
+        } else {
+            return 'Erreur lors de l inscription';
+        }
+    }
 }
 
 // Ajout d'un utilisateur

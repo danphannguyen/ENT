@@ -10,6 +10,27 @@
 
 <body>
 
+    <?php
+    session_start();
+
+    // Include du fichiers contenant toute les fonctions
+    include('./UserModel.php');
+
+    // switch case pour traiter la connexion
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'login') {
+            // Si c'est login on teste la connexion
+
+            $result = connexion($_POST['mailLogin'], $_POST['passwordLogin']);
+            // Debug
+            echo $result;
+        } else {
+            echo "Erreur";
+        }
+    }
+
+    ?>
+
     <div id="headerConnexion">
         <img src="./svg/symbLogo.svg" alt="">
         <img src="./svg/typoLogo.svg" alt="">
@@ -17,16 +38,24 @@
 
     <section id="sectionConnexion">
         <div id="containerConnexion" class="dc-center">
+
+            <!-- AFFICHER LES ERREURS EN PHP  -->
+
+
+
             <h1>Connexion</h1>
-            <form id="formConnexion" class="dc-center" action="connexion.php" method="post">
+
+            <form id="formConnexion" class="dc-center" action="login.php" method="post">
+
+                <input type="hidden" name="action" value="login">
 
                 <div class="inputFormConnexion">
-                    <input type="email" name="mail" id="mailConnexion" placeholder="Email" required>
+                    <input type="email" name="mailLogin" id="mailConnexion" placeholder="Email" required>
                 </div>
 
                 <div class="inputFormConnexion">
-                    <input type="password" name="password" id="passwordConnexion" placeholder="Mot de passe" required>
-                    <div id="eyeButton" onclick="">
+                    <input type="password" name="passwordLogin" id="passwordConnexion" placeholder="Mot de passe" required>
+                    <div id="eyeButton">
                         <img id="eyeImg" src="./svg/show.svg" alt="">
                     </div>
                 </div>
@@ -36,6 +65,7 @@
                     <a href="">Mot de passe oublié ?</a>
                 </div>
             </form>
+
         </div>
     </section>
 
