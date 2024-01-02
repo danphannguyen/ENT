@@ -75,6 +75,32 @@
 
     <section id="profileSection">
 
+        <div id="profileBodyContainer">
+
+            <div id="profileBodyDiv1">
+                <img src="./svg/profile.svg" alt="">
+                <h1>Prénom Nom</h1>
+                <div class="hr"></div>
+                <div>
+                    <img src="" alt="">
+                    <span>IUT Marne la Vallée - Campus Champs sur Marne</span>
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <span>BUT MMI 2 - TPB</span>
+                </div>
+            </div>
+
+            <div id="profileBodyDiv2">
+
+            </div>
+
+        </div>
+
+        <div id="profileAsideContainer">
+
+        </div>
+
     </section>
 
 </body>

@@ -48,6 +48,17 @@ p {
   flex-direction: column;
 }
 
+.hr {
+  border: none;
+  border-top: 1px solid var(--clr-text);
+  color: var(--clr-text);
+  opacity: 0.3;
+  overflow: visible;
+  text-align: center;
+  height: 1px;
+  width: 100%;
+}
+
 /* ============== ROOT ============== */
 
 :root {
@@ -64,7 +75,7 @@ nav {
   top: 50%;
   translate: 0 -50%;
   height: 90vh;
-  width: 8vw;
+  width: 6vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -290,11 +301,46 @@ nav a:hover {
 /* ============================================ */
 
 #profileSection {
-  margin: 5vh 0 5vh 10vw;
+  margin: 5vh 0 5vh 8vw;
   height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2vw;
   font-family: 'Inter', sans-serif;
-  background-color: turquoise;
+}
+
+#profileBodyContainer {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+#profileBodyDiv1 {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: var(--clr-forground);
+}
+
+#profileBodyDiv2 {
+  height: 50%;
+  width: 100%;
+  border-radius: 16px;
+  background-color: var(--clr-forground);
+}
+
+#profileAsideContainer {
+  height: 90vh;
+  width: 40%;
+  background-color: var(--clr-forground);
+  border-radius: 16px 0px 0px 16px ;
 }
