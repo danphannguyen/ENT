@@ -59,11 +59,16 @@ p {
   width: 100%;
 }
 
+.regularText {
+  font-weight: 400 !important;
+}
+
 /* ============== ROOT ============== */
 
 :root {
   --clr-background: #DCDCDC;
-  --clr-forground: #fdfdfd;
+  --clr-forground: #F6F6F6;
+  --clr-forground2: #fdfdfd;
   --clr-text: #232323;
 }
 
@@ -83,6 +88,7 @@ nav {
   background-color: var(--clr-forground);
   padding: 1rem 1rem;
   border-radius: 0px 16px 16px 0px;
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
 }
 
 nav a {
@@ -308,6 +314,7 @@ nav a:hover {
   justify-content: center;
   gap: 2vw;
   font-family: 'Inter', sans-serif;
+  font-weight: 600;
 }
 
 #profileBodyContainer {
@@ -321,26 +328,218 @@ nav a:hover {
 }
 
 #profileBodyDiv1 {
+  position: relative;
   height: 50%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   border-radius: 16px;
   background-color: var(--clr-forground);
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+}
+
+#profileInfo1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 #profileBodyDiv2 {
+  position: relative;
   height: 50%;
   width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  padding: 1rem;
   border-radius: 16px;
   background-color: var(--clr-forground);
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+}
+
+#profileInfo2 {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.875rem;
+  font-weight: 500;
+
 }
 
 #profileAsideContainer {
   height: 90vh;
   width: 40%;
+  padding: 2rem 0 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-direction: column;
   background-color: var(--clr-forground);
-  border-radius: 16px 0px 0px 16px ;
+  border-radius: 16px 0px 0px 16px;
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+}
+
+#profilePicture {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.profileBodyLabel {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-weight: 500;
+  background-color: var(--clr-forground2);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+}
+
+.profileBodyLabel h1 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.profileBodyEdit {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileBodyEdit img:hover {
+  cursor: pointer;
+}
+
+.profileIcon {
+  height: 24px;
+  width: 24px;
+}
+
+.profileTextContainer {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profileText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profileInfo2Text {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.asideDiv {
+  background: var(--clr-forground2);
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  border-radius: 12px 0px 0px 12px;
+  overflow: hidden;
+  filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+}
+
+.asideDivTitle {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--clr-text);
+}
+
+.asideDivTitle h1 {
+  color: var(--clr-forground2);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.absTemplate {
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.absPartOne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.absPartTwo {
+  opacity: 0.5;
+}
+
+.absIcon {
+  height: 14px;
+  width: 14px;
+}
+
+.asideBodyContainer {
+  width: 100%;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#absSeeMore {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+#absSeeMore:hover {
+  cursor: pointer;
+}
+
+#absRecap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.recapPartOne {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.recapPartTwo {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  opacity: 0.5;
 }
