@@ -40,7 +40,20 @@
         <div id="containerConnexion" class="dc-center">
 
             <!-- AFFICHER LES ERREURS EN PHP  -->
+            <?php
 
+            if (isset($_POST['action'])) {
+
+                if($result == "Connexion réussie") {
+                    header('Location: accueil.php');
+                }
+
+                echo '
+                <span id="spanLog">' . $result . '</span>
+                ';
+            }
+
+            ?>
 
 
             <h1>Connexion</h1>

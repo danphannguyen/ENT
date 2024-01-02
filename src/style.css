@@ -60,11 +60,11 @@ p {
 /* ============== NAVBAR ============== */
 
 nav {
-  position: absolute;
+  position: fixed;
   top: 50%;
   translate: 0 -50%;
   height: 90vh;
-  width: fit-content;
+  width: 8vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,8 +151,17 @@ nav a:hover {
 }
 
 /* ============================================ */
-/* ============== Login PAGE ============== */
+/* ============== Login PAGE ================== */
 /* ============================================ */
+
+#spanLog {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 4px;
+  text-align: center;
+  background-color: #FFA500;
+}
 
 #headerConnexion {
   position: fixed;
@@ -188,6 +197,8 @@ nav a:hover {
 }
 
 #containerConnexion {
+  overflow: hidden;
+  position: relative;
   border-radius: 16px;
   background-color: var(--clr-forground);
   gap: 2rem;
@@ -272,4 +283,18 @@ nav a:hover {
 
 #eyeButton:hover {
   cursor: pointer;
+}
+
+/* ============================================ */
+/* ============== Profile PAGE ================ */
+/* ============================================ */
+
+#profileSection {
+  margin: 5vh 0 5vh 10vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  background-color: turquoise;
 }
