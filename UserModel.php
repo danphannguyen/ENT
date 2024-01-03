@@ -62,13 +62,108 @@ function bindUserInfo($mail)
     $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 
     $_SESSION['id'] = $result[0]['id_user'];
-    $_SESSION['login'] = $result[0]['login_user'];
-    $_SESSION['prenom'] = $result[0]['prenom_user'];
-    $_SESSION['nom'] = $result[0]['nom_user'];
 
-    return isset($_SESSION['id'], $_SESSION['login'], $_SESSION['prenom'], $_SESSION['nom']);
+    return isset($_SESSION['id']);
 }
 
+function getUserInfo($id)
+{
+    $db = dbConnect();
+
+    $query = "SELECT
+        users.*,
+        tps.nom_tp,
+        promotions.nom_promotion,
+        roles.nom_role
+    FROM
+        users
+    JOIN
+        tps ON users.ext_tp = tps.id_tp
+    JOIN
+        promotions ON users.ext_promotions = promotions.id_promotion
+    JOIN
+        roles ON users.ext_role = roles.id_role
+    WHERE
+        users.id_user = :id_session;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":id_session", $id, PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
+// ===================================================================================================
+// ======================================= Fonction CRUD =========================================
+// ===================================================================================================
+
+function editUser($id_user, $mail, $firstname, $lastname, $password, $phone) {
+
+    $db = dbConnect();
+
+    // Initialiser la variable $hash à null
+    $hash = null;
+
+    // Si $password n'est pas vide, alors générer le hachage
+    if (!empty($password)) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    $query = "UPDATE users SET login_user = :mail, ";
+
+    // Ajouter le champ password_user uniquement si $password n'est pas vide
+    if (!empty($password)) {
+        $query .= "mdp_user = :pswd, ";
+    }
+
+    $query .= "prenom_user = :firstname, nom_user = :lastname, phone_user = :phone WHERE id_user = :id";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+
+    // Ajouter le bind pour le mot de passe uniquement si $password n'est pas vide
+    if (!empty($password)) {
+        $stmt->bindValue(":pswd", $hash, PDO::PARAM_STR);
+    }
+
+    $stmt->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+    $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+    $stmt->bindValue(":phone", $phone, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+
+    // Exécution de la requête et retourne son état
+    return $stmt->execute();
+
+}
+
+function editUserPhoto ($id_user, $path) {
+
+    $db = dbConnect();
+
+    $query = "UPDATE users SET photo_user = :photo WHERE id_user = :id";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":photo", $path, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+
+    // Exécution de la requête et retourne son état
+    return $stmt->execute();
+
+}
+
+function addImage($id, $image)
+{
+    $uploadDir = "uploads/";
+    $newFileName = "user_" . $id . ".png";
+    $uploadFile = $uploadDir . basename($newFileName);
+
+    // Déplacez le fichier vers le répertoire d'upload
+    if (move_uploaded_file($image, $uploadFile)) {
+        return $uploadFile;
+    } else {
+        return "";
+    }
+}
 
 // ===================================================================================================
 // ======================================= Fonction Register =========================================

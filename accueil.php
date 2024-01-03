@@ -10,18 +10,29 @@
 
 <body>
 
+    <?php
+    session_start();
+
+    if (isset($_SESSION['id'])) {
+        include('./UserModel.php');
+
+        $result = getUserInfo($_SESSION['id']);
+    } else {
+        header('Location: index.php');
+    }
+    
+    ?>
+
     <nav>
 
         <div class="navTop">
-            <a href="">
-                <div class="navIconBg2">
-                    <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
-                </div>
-            </a>
+            <div class="navUnivLogo">
+                <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
+            </div>
         </div>
 
         <div id="navMiddle">
-            <a href="#">
+            <a href="./accueil.php">
                 <div class="navIconContainer">
                     <div class="navIconBg">
                         <img src="./svg/accueil.svg" alt="">
@@ -64,9 +75,9 @@
         </div>
 
         <div class="navBottom">
-            <a href="">
+            <a href="./profile.php">
                 <div class="navIconBg2">
-                    <img src="./svg/profile.svg" alt="">
+                    <img src="<?php echo $result[0]['photo_user']; ?>" alt="">
                 </div>
             </a>
         </div>

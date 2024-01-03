@@ -117,9 +117,15 @@ nav a:hover {
   border: 1px solid var(--clr-forground);
 }
 
+.navUnivLogo img {
+  width: 40px;
+  height: 40px;
+}
+
 .navIconBg2 img {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   transition: filter 0.3s ease;
 }
 
@@ -240,6 +246,14 @@ nav a:hover {
   gap: 2rem;
 }
 
+#mailConnexion {
+  background: none;
+}
+
+#passwordConnexion {
+  background: none;
+}
+
 .inputFormConnexion {
   position: relative;
   display: flex;
@@ -325,6 +339,30 @@ nav a:hover {
   justify-content: center;
   flex-direction: column;
   gap: 2vw;
+}
+
+#profileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#profileHeader button {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#profileHeader button:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 #profileBodyDiv1 {
@@ -414,10 +452,16 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .profileBodyEdit img:hover {
   cursor: pointer;
+  opacity: 0.5;
 }
 
 .profileIcon {
@@ -542,4 +586,154 @@ nav a:hover {
   align-items: center;
   justify-content: end;
   opacity: 0.5;
+}
+
+/* ============== Modal ================ */
+
+#modalBg {
+  display: block;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  background-color: var(--clr-text);
+}
+
+.profileModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  overflow: hidden;
+  min-width: 50vw;
+  background-color: var(--clr-forground);
+  font-family: 'Inter', sans-serif;
+}
+
+.profilModalTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--clr-text);
+}
+
+.profilModalTitle h1 {
+  color: var(--clr-forground2);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.profilModalClose {
+  font-size: 1.2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  filter: invert(1);
+  background: none;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.profilModalClose:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.profileModalFormContainer {
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+.profileModalForm {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  gap: 1rem;
+}
+
+.profilInputContainer {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.profilInputContainer label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.profilInputContainer input {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1.5px solid var(--clr-text);
+  border-radius: 10px;
+  padding: 12px 20px;
+  background-color: transparent;
+  width: 100%;
+  color: var(--clr-text);
+  opacity: 0.75;
+}
+
+.profilModalSubmit {
+  width: fit-content;
+  border: 1.5px solid var(--clr-text) !important;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background-color: var(--clr-text);
+  color: var(--clr-forground);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.profilModalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.profilModalSubmit:hover {
+  cursor: pointer;
+  background-color: var(--clr-forground);
+  color: var(--clr-text);
+}
+
+#confirmPasswordContainer {
+  display: none;
+}
+
+#userInformationModal {
+  display: none;
+}
+
+#userPhotoModal {
+  display: none;
+}
+
+#modalBg {
+  display: none;
+}
+
+#firstLastNameInput {
+  flex-direction: row;
+  gap: 1rem;
 }

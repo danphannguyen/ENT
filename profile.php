@@ -10,18 +10,61 @@
 
 <body>
 
+    <?php
+
+    session_start();
+
+    include('./UserModel.php');
+
+    if (isset($_SESSION['id'])) {
+
+        // On actualise d'abord les informations en cas de changements
+        if (isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'editUserPhoto':
+
+                    if (isset($_FILES["profilePictureFile"]) && $_FILES["profilePictureFile"]["error"] == 0) {
+                        $path = addImage($_SESSION['id'], $_FILES["profilePictureFile"]["tmp_name"]);
+                    } else {
+                        $path = "./svg/profile.svg";
+                    }
+
+                    $result = editUserPhoto($_SESSION['id'], $path);
+                    break;
+                case 'editUserInfo':
+                    $result = editUser($_SESSION['id'], $_POST['email'], $_POST['prenom'], $_POST['nom'], $_POST['newPassword'], $_POST['telephone']);
+                    break;
+                case 'logout':
+                    unset(
+                        $_SESSION['id'],
+                    );
+                    session_destroy();
+                    header('Location: login.php');
+                    break;
+                default:
+                    echo "Erreur";
+                    break;
+            }
+        }
+
+        // Puis on les récupères
+        $result = getUserInfo($_SESSION['id']);
+    } else {
+        header('Location: login.php');
+    }
+
+    ?>
+
     <nav>
 
         <div class="navTop">
-            <a href="">
-                <div class="navIconBg2">
-                    <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
-                </div>
-            </a>
+            <div class="navUnivLogo">
+                <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
+            </div>
         </div>
 
         <div id="navMiddle">
-            <a href="#">
+            <a href="./accueil.php">
                 <div class="navIconContainer">
                     <div class="navIconBg">
                         <img src="./svg/accueil.svg" alt="">
@@ -64,9 +107,9 @@
         </div>
 
         <div class="navBottom">
-            <a href="">
+            <a href="./profile.php">
                 <div class="navIconBg2">
-                    <img src="./svg/profile.svg" alt="">
+                    <img src="<?php echo $result[0]['photo_user']; ?>" alt="">
                 </div>
             </a>
         </div>
@@ -83,13 +126,26 @@
                     <h1>Coordonnées</h1>
                 </div>
 
-                <div class="profileBodyEdit">
+                <button id="userPhotoButton" class="profileBodyEdit">
                     <img src="./svg/edit.svg" alt="">
-                </div>
+                </button>
 
                 <div id="profileInfo1">
-                    <img id="profilePicture" src="./svg/profile.svg" alt="">
-                    <h1>Prénom Nom</h1>
+
+                    <img id="profilePicture" src="<?php echo $result[0]['photo_user']; ?>" alt="">
+
+                    <div id="profileHeader">
+                        <h1> <?php echo $result[0]['prenom_user'] . " " . $result[0]['nom_user'] ?> </h1>
+
+                        <form action="profile.php" method="post">
+                            <button type="submit">
+                                <img src="./svg/disconnect.svg" alt="Logout">
+                            </button>
+
+                            <input type="hidden" name="action" value="logout">
+                        </form>
+
+                    </div>
                     <div class="hr"></div>
 
                     <div class="profileTextContainer">
@@ -99,7 +155,8 @@
                         </div>
                         <div class="profileText">
                             <img class="profileIcon" src="./svg/cours.svg" alt="">
-                            <span>BUT MMI 2 - TPB</span>
+                            <!-- CHANGER TP + PROMOTION -->
+                            <span>BUT <?php echo $result[0]['nom_promotion'] . " - " . $result[0]['nom_tp'] ?></span>
                         </div>
                     </div>
 
@@ -113,14 +170,14 @@
                     <h1>Sécurité du Compte</h1>
                 </div>
 
-                <div class="profileBodyEdit">
+                <button id="userInformationButton" class="profileBodyEdit">
                     <img src="./svg/edit.svg" alt="">
-                </div>
+                </button>
 
                 <div id="profileInfo2">
                     <div class="profileInfo2Text">
                         <span>Identifiant</span>
-                        <span class="regularText">Prénom Nom</span>
+                        <span class="regularText"><?php echo $result[0]['prenom_user'] . " " . $result[0]['nom_user'] ?></span>
                     </div>
                     <div class="hr"></div>
                     <div class="profileInfo2Text">
@@ -130,12 +187,12 @@
                     <div class="hr"></div>
                     <div class="profileInfo2Text">
                         <span>Courriel Universitaire</span>
-                        <span class="regularText">patrick.faure@edu.univ-eiffel.fr</span>
+                        <span class="regularText"><?php echo $result[0]['login_user'] ?></span>
                     </div>
                     <div class="hr"></div>
                     <div class="profileInfo2Text">
                         <span>Téléphone</span>
-                        <span class="regularText">+33 6 95 37 02 85</span>
+                        <span class="regularText"><?php echo $result[0]['phone_user'] ?></span>
                     </div>
                 </div>
 
@@ -281,6 +338,98 @@
         </div>
 
     </section>
+
+    <section id="modalSection">
+
+        <div id="modalBg">
+        </div>
+
+        <div id="userInformationModal" class="profileModalContainer">
+            <div class="profileModal">
+
+                <div class="profilModalTitle">
+                    <h1>Modifier le profile</h1>
+                    <button id="userInformationModalClose" class="profilModalClose">X</button>
+                </div>
+
+                <div class="profileModalFormContainer">
+                    <form name="editUserInfo" onsubmit="return validateForm()" class="profileModalForm" action="profile.php" method="post">
+
+                        <input type="hidden" name="action" value="editUserInfo">
+
+                        <div id="firstLastNameInput" class="profilInputContainer">
+                            <div>
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" id="prenom" name="prenom" value="<?php echo $result[0]['prenom_user'] ?>" required>
+                            </div>
+
+                            <div>
+                                <label for="nom">Nom :</label>
+                                <input type="text" id="nom" name="nom" value="<?php echo $result[0]['nom_user'] ?>" required>
+                            </div>
+                        </div>
+
+                        <div class="profilInputContainer">
+                            <label for="newPassword">Nouveau mot de passe :</label>
+                            <input type="password" id="newPassword" name="newPassword">
+                        </div>
+
+                        <div id="confirmPasswordContainer" class="profilInputContainer">
+                            <label for="confirmNewPassword">Confirmer le mot de passe:</label>
+                            <input type="password" id="confirmNewPassword">
+                        </div>
+
+                        <div class="profilInputContainer">
+                            <label for="email">Courriel Universitaire :</label>
+                            <input type="email" id="email" name="email" value="<?php echo $result[0]['login_user'] ?>" required>
+                        </div>
+
+                        <div class="profilInputContainer">
+                            <label for="telephone">Téléphone :</label>
+                            <input type="tel" id="telephone" name="telephone" value="<?php echo $result[0]['phone_user'] ?>" required>
+                        </div>
+
+                        <div class="profilModalFooter">
+                            <input class="profilModalSubmit" type="submit" value="Sauvegarder">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="userPhotoModal" class="profileModalContainer">
+            <div class="profileModal">
+
+                <div class="profilModalTitle">
+                    <h1>Modifier la photo profile</h1>
+                    <button id="userPhotoModalClose" class="profilModalClose">X</button>
+                </div>
+
+                <div class="profileModalFormContainer">
+                    <form name="editUserInfo" class="profileModalForm" action="profile.php" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" name="action" value="editUserPhoto">
+
+                        <div class="profilInputContainer">
+                            <label for="profilePictureFile">Image de profile :</label>
+                            <input type="file" id="profilePictureFile" name="profilePictureFile">
+                        </div>
+
+                        <div class="profilModalFooter">
+                            <input class="profilModalSubmit" type="submit" value="Sauvegarder">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./src/profile.js"></script>
 
 </body>
 

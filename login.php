@@ -44,7 +44,7 @@
 
             if (isset($_POST['action'])) {
 
-                if($result == "Connexion réussie") {
+                if($result == "Connexion réussie" && isset($_SESSION['id'])) {
                     header('Location: accueil.php');
                 }
 
