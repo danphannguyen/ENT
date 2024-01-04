@@ -12,35 +12,46 @@
 
     <?php
 
+    // On démarre la session pour récupérer les variables de session
     session_start();
 
+    // On inclut le fichier contenant les fonctions
     include('./UserModel.php');
 
+    // On vérifie que l'utilisateur est connecté et qu'il est admin
     if (isset($_SESSION['id'])) {
 
         // On actualise d'abord les informations en cas de changements
         if (isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'editUserPhoto':
-
+                    // On vérifie si une image est envoyé
                     if (isset($_FILES["profilePictureFile"]) && $_FILES["profilePictureFile"]["error"] == 0) {
+                        // On ajoute l'image et on récupère le path
                         $path = addImage($_SESSION['id'], $_FILES["profilePictureFile"]["tmp_name"]);
                     } else {
+                        // Si aucune image n'est envoyé on met le path par défaut
                         $path = "./svg/profile.svg";
                     }
-
+                    // On envois le path à la fonction editUserPhoto
                     $result = editUserPhoto($_SESSION['id'], $path);
                     break;
+
                 case 'editUserInfo':
+                    // On envois les données à la fonction editUser
                     $result = editUser($_SESSION['id'], $_POST['email'], $_POST['prenom'], $_POST['nom'], $_POST['newPassword'], $_POST['telephone']);
                     break;
+
                 case 'logout':
+                    // Si c'est une déconnexion, on unset les variables de session + session destroy + redirection vers la page de connexion
                     unset(
                         $_SESSION['id'],
+                        $_SESSION['role'],
                     );
                     session_destroy();
                     header('Location: login.php');
                     break;
+                    
                 default:
                     echo "Erreur";
                     break;
@@ -50,6 +61,8 @@
         // Puis on les récupères
         $result = getUserInfo($_SESSION['id']);
     } else {
+
+        // Si l'utilisateur n'est pas connecté ou qu'il n'est pas admin on le redirige vers la page de connexion
         header('Location: login.php');
     }
 
@@ -156,7 +169,15 @@
                         <div class="profileText">
                             <img class="profileIcon" src="./svg/cours.svg" alt="">
                             <!-- CHANGER TP + PROMOTION -->
-                            <span>BUT <?php echo $result[0]['nom_promotion'] . " - " . $result[0]['nom_tp'] ?></span>
+                            <?php
+                            if ($result[0]['nom_tp'] == "PSL") {
+                                echo " <span>" . $result[0]['nom_role'] ." au sein de l'IUT</span>";
+                            } else {
+                                echo " <span>BUT" . $result[0]['nom_promotion'] . ' - ' . $result[0]['nom_tp'] . "</span>";
+                            }
+                            
+                            
+                            ?>
                         </div>
                     </div>
 
@@ -341,7 +362,7 @@
 
     <section id="modalSection">
 
-        <div id="modalBg">
+        <div class="modalBg">
         </div>
 
         <div id="userInformationModal" class="profileModalContainer">
@@ -357,7 +378,7 @@
 
                         <input type="hidden" name="action" value="editUserInfo">
 
-                        <div id="firstLastNameInput" class="profilInputContainer">
+                        <div class="profilInputContainer firstLastNameInput">
                             <div>
                                 <label for="prenom">Prénom :</label>
                                 <input type="text" id="prenom" name="prenom" value="<?php echo $result[0]['prenom_user'] ?>" required>
@@ -374,7 +395,7 @@
                             <input type="password" id="newPassword" name="newPassword">
                         </div>
 
-                        <div id="confirmPasswordContainer" class="profilInputContainer">
+                        <div class="profilInputContainer confirmPasswordContainer">
                             <label for="confirmNewPassword">Confirmer le mot de passe:</label>
                             <input type="password" id="confirmNewPassword">
                         </div>

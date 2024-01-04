@@ -1,23 +1,24 @@
 
 // ===== Code pour afficher/cacher les modals =====
+// Aux click sur les boutons, afficher les modals correspondantes avec des fadeIn() et fadeOut()
 
 $("#userInformationButton").click(function () {
-    $("#modalBg").fadeIn();
+    $(".modalBg").fadeIn();
     $("#userInformationModal").fadeIn();
 });
 
 $("#userInformationModalClose").click(function () {
-    $("#modalBg").fadeOut();
+    $(".modalBg").fadeOut();
     $("#userInformationModal").fadeOut();
 });
 
 $("#userPhotoButton").click(function () {
-    $("#modalBg").fadeIn();
+    $(".modalBg").fadeIn();
     $("#userPhotoModal").fadeIn();
 });
 
 $("#userPhotoModalClose").click(function () {
-    $("#modalBg").fadeOut();
+    $(".modalBg").fadeOut();
     $("#userPhotoModal").fadeOut();
 });
 
@@ -30,9 +31,11 @@ var wasEmpty = true;
 
 // Ajouter un écouteur d'événements pour l'événement "input"
 newPasswordInput.on("input", function () {
+    
     // Vérifier si le champ était vide avant la frappe
     if (wasEmpty) {
-        console.log("Vous avez commencé à écrire dans newPassword !");
+
+        // Si c'est la première fois que l'utilisateur écrit dans le champ, afficher le champ de confirmation
         $("#confirmPasswordContainer").fadeIn();
     }
 
@@ -43,8 +46,11 @@ newPasswordInput.on("input", function () {
 // ===== Fonction pour vérifier que les deux champs sont identiques =====
 
 function validateForm() {
+    // récupération des valeurs des champs
     let password = document.forms["editUserInfo"]["newPassword"].value;
     let confirmPassword = document.forms["editUserInfo"]["confirmNewPassword"].value;
+
+    // Vérification que les deux champs sont identiques
     if (password != confirmPassword) {
         alert("Les mots de passe ne correspondent pas.");
         return false;

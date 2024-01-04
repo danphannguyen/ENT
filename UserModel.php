@@ -49,6 +49,7 @@ function passwordCheck($mail, $password)
     return password_verify($password, $result[0]['mdp_user']);
 }
 
+// Attribution des informations de l'utilisateur à la session
 function bindUserInfo($mail)
 {
 
@@ -62,10 +63,16 @@ function bindUserInfo($mail)
     $result = $stmt->fetchall(PDO::FETCH_ASSOC);
 
     $_SESSION['id'] = $result[0]['id_user'];
+    $_SESSION['role'] = $result[0]['ext_role'];
 
     return isset($_SESSION['id']);
 }
 
+// ===================================================================================================
+// ======================================= Fonction CRUD ============================================
+// ===================================================================================================
+
+// Récupération de toutes les informations de l'utilisateur
 function getUserInfo($id)
 {
     $db = dbConnect();
@@ -93,10 +100,69 @@ function getUserInfo($id)
     return $stmt->fetchall(PDO::FETCH_ASSOC);
 }
 
-// ===================================================================================================
-// ======================================= Fonction CRUD =========================================
-// ===================================================================================================
+// Fonction de récupération de tous les rôles
+function getAllRole() {
+    $db = dbConnect();
 
+    $query = "SELECT * FROM roles";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
+// Fonction de récupération de tous les TPs
+function getAllTp() {
+    $db = dbConnect();
+
+    $query = "SELECT * FROM tps";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
+// Fonction de récupération de toutes les promotions
+function getAllPromotion() {
+    $db = dbConnect();
+
+    $query = "SELECT * FROM promotions";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
+// Fonction de récupération de tous les utilisateurs et de toutes leurs informations
+function getAllUsersInfo()
+{
+    $db = dbConnect();
+
+    $query = "SELECT
+        users.*,
+        tps.nom_tp,
+        promotions.nom_promotion,
+        roles.nom_role
+    FROM
+        users
+    JOIN
+        tps ON users.ext_tp = tps.id_tp
+    JOIN
+        promotions ON users.ext_promotions = promotions.id_promotion
+    JOIN
+        roles ON users.ext_role = roles.id_role
+    ";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
+// Fonction d'édition d'un utilisateur
 function editUser($id_user, $mail, $firstname, $lastname, $password, $phone) {
 
     $db = dbConnect();
@@ -136,6 +202,63 @@ function editUser($id_user, $mail, $firstname, $lastname, $password, $phone) {
 
 }
 
+// Fonction de suppression d'un utilisateur
+function deleteUser($id_user) {
+    try {
+        $db = dbConnect();
+
+        $query = "DELETE FROM users WHERE id_user = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return "L'utilisateur a été supprimé avec succès.";
+
+    } catch (PDOException $e) {
+        
+        return "Erreur lors de la suppression de l'utilisateur : " . $e->getMessage();
+    }
+
+}
+
+// Fonction d'inscription 
+function register($mail, $password, $firstname, $lastname, $phonenumber, $role, $tp, $promotion)
+{
+    if (isMailExist($mail)) {
+        return "L adresse mail existe déjà";
+    } else {
+        if (addUser($mail, $password, $firstname, $lastname, $phonenumber, $role, $tp, $promotion)) {
+            return 'Inscription réussie';
+        } else {
+            return 'Erreur lors de l inscription';
+        }
+    }
+}
+
+// Ajout d'un utilisateur dans la base de données
+function addUser($mail, $password, $firstname, $lastname, $phonenumber, $role, $tp, $promotion)
+{
+
+    $db = dbConnect();
+
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users (login_user, mdp_user, prenom_user, nom_user, phone_user, ext_promotions, ext_tp, ext_role) VALUES (:mail, :pswd, :firstname, :lastname, :phone, :promotion, :tp, :roles)";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+    $stmt->bindValue(":pswd", $hash, PDO::PARAM_STR);
+    $stmt->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+    $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+    $stmt->bindValue(":phone", $phonenumber, PDO::PARAM_STR);
+    $stmt->bindValue(":promotion", $promotion, PDO::PARAM_STR);
+    $stmt->bindValue(":tp", $tp, PDO::PARAM_STR);
+    $stmt->bindValue(":roles", $role, PDO::PARAM_STR);
+    // Exécution de la requête et retourne son état
+    return $stmt->execute();
+}
+
+// Fonction de modification du path de la photo de profil
 function editUserPhoto ($id_user, $path) {
 
     $db = dbConnect();
@@ -151,6 +274,7 @@ function editUserPhoto ($id_user, $path) {
 
 }
 
+// Fonction de modification de la photo de profil dans le dossier /uploads
 function addImage($id, $image)
 {
     $uploadDir = "uploads/";
@@ -163,42 +287,4 @@ function addImage($id, $image)
     } else {
         return "";
     }
-}
-
-// ===================================================================================================
-// ======================================= Fonction Register =========================================
-// ===================================================================================================
-
-
-// Fonction d'inscription
-function register($mail, $password, $firstname, $lastname)
-{
-    if (isMailExist($mail)) {
-        return "L adresse mail existe déjà";
-    } else {
-        if (addUser($mail, $password, $firstname, $lastname)) {
-            return 'Inscription réussie';
-        } else {
-            return 'Erreur lors de l inscription';
-        }
-    }
-}
-
-// Ajout d'un utilisateur
-function addUser($mail, $password, $firstname, $lastname)
-{
-
-    $db = dbConnect();
-
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-
-    $query = "INSERT INTO users (login_user, mdp_user, prenom_user, nom_user) VALUES (:mail, :pswd, :firstname, :lastname)";
-
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
-    $stmt->bindValue(":pswd", $hash, PDO::PARAM_STR);
-    $stmt->bindValue(":firstname", $firstname, PDO::PARAM_STR);
-    $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
-    // Exécution de la requête et retourne son état
-    return $stmt->execute();
 }

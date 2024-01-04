@@ -18,7 +18,7 @@
 
         $result = getUserInfo($_SESSION['id']);
     } else {
-        header('Location: index.php');
+        header('Location: login.php');
     }
     
     ?>

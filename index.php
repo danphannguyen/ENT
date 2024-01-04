@@ -24,7 +24,6 @@ if (isset($_POST['action'])) {
                 $password = $_POST['passwordRegister'];
                 $firstname = $_POST['firstnameRegister'];
                 $lastname = $_POST['lastnameRegister'];
-                $result = register($mail, $password, $firstname, $lastname);
 
                 // Debug
                 echo $result;

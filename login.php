@@ -22,8 +22,7 @@
             // Si c'est login on teste la connexion
 
             $result = connexion($_POST['mailLogin'], $_POST['passwordLogin']);
-            // Debug
-            echo $result;
+
         } else {
             echo "Erreur";
         }
@@ -44,10 +43,12 @@
 
             if (isset($_POST['action'])) {
 
+                // Si la connexion est réussie et que l'id est set on redirige vers l'accueil
                 if($result == "Connexion réussie" && isset($_SESSION['id'])) {
                     header('Location: accueil.php');
                 }
 
+                // Si la connexion n'est pas réussie ou que l'id n'est pas set on affiche un message d'erreur
                 echo '
                 <span id="spanLog">' . $result . '</span>
                 ';
@@ -83,17 +84,19 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script>
+        // Script pour afficher ou cacher le mot de passe
         const togglePassword = document.querySelector('#eyeButton');
         const password = document.querySelector('#passwordConnexion');
         var image = document.getElementById("eyeImg");
         var isImage1 = true;
 
         togglePassword.addEventListener('click', function(e) {
-            // toggle the type attribute
+
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
-            // toggle the eye / eye slash icon
+
             this.classList.toggle('bi-eye');
 
             if (isImage1) {
