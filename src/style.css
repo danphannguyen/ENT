@@ -344,3 +344,110 @@ nav a:hover {
   background-color: var(--clr-forground);
   border-radius: 16px 0px 0px 16px ;
 }
+
+/* ========================DASHBOARD======================== */
+
+.dashboard-main {
+  display: flex;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 10px;
+  display: none;
+}
+
+#modal-overlay.open {
+  display: block !important;
+}
+
+.modal-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 600px;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  border-top: solid 40px #232323;
+}
+
+#modal-exit {
+  position: absolute;
+  top: -33px;
+  right: 8px;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.blue {
+  width: 600px;
+  height: 600px;
+  background-color: blue;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 2rem;
+}
+
+.btn-container button {
+  padding: 2rem;
+  gap: 1rem;
+  border: none;
+  max-width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 15px;
+  transition: all 0.2s ease-in-out;
+  background-color: #D9D9D9;
+}
+
+.btn-container button:hover {
+  cursor: pointer;
+  scale: 0.95;
+  background-color: #C4C4C4;
+}
+
+#modalBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+#modalBtn:hover {
+  scale: 0.9;
+}

@@ -2,7 +2,7 @@
 
 function dbConnect()
 {
-    return new PDO('mysql:host=109.234.161.199;dbname=dphannguyen_ent;port=3306,charest=utf8', 'dphannguyen_entadmin', 'testbdd01');
+    return new PDO('mysql:host=localhost;dbname=dphannguyen_ent;port=8889', 'root', 'root');
 }
 
 // Fonction de connexion
@@ -106,4 +106,47 @@ function addUser($mail, $password, $firstname, $lastname)
     $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
     // Exécution de la requête et retourne son état
     return $stmt->execute();
+}
+
+//fonction pour ajouter des widgets 
+
+function saveWidget($widget)
+{
+    $db = dbConnect();
+    $insert = $db->prepare('INSERT INTO save_widget(user_id, widget_id) VALUES(?, ?)');
+    $insert->execute(array($_SESSION['id'], $widget));
+    return true;
+}
+
+function getSaveWidget()
+{
+    $db = dbConnect();
+    $reqSave = $db->prepare('SELECT * FROM save_widget WHERE user_id = ?');
+    $reqSave->execute(array($_SESSION['id']));
+    $saveWidget = $reqSave->fetchAll();
+    $saveWidgetId = array_column($saveWidget, 'widget_id');
+    
+    // Utilisez la fonction implode pour construire la liste d'IDs sous forme de chaîne
+    $placeholders = rtrim(str_repeat('?,', count($saveWidgetId)), ',');
+
+    $reqSaveWidget = $db->prepare("SELECT * FROM widget WHERE widget_id IN ($placeholders)");
+    $reqSaveWidget->execute($saveWidgetId);
+
+    return $reqSaveWidget;
+}
+
+function deleteSaveWidget($widget)
+{
+    $db = dbConnect();
+    $delete = $db->prepare('DELETE FROM save_widget WHERE user_id = ? AND widget_id = ?');
+    $delete->execute(array($_SESSION['id'], $widget));
+    return true;
+}
+
+function getAvailableWidgets()
+{
+    $db = dbConnect();
+    $reqWidgets = $db->query('SELECT * FROM widget');
+    return $reqWidgets->fetchAll();
+    include 'dashboard.php';
 }

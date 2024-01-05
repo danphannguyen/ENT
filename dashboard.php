@@ -1,13 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require_once 'UserModel.php';
 
+// Appeler la fonction getAvailableWidgets() après l'inclusion du fichier UserModel.php
+$widgets = getAvailableWidgets();
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <title>Document</title>
-</head>
 
+    <title>Dashboard</title>
+</head>
 <body>
 
     <nav>
@@ -21,7 +29,7 @@
         </div>
 
         <div id="navMiddle">
-            <a href="#">
+            <a href="accueil.php">
                 <div class="navIconContainer">
                     <div class="navIconBg">
                         <img src="./svg/accueil.svg" alt="">
@@ -73,6 +81,44 @@
 
     </nav>
 
+
+  <section class="dashboard-main">
+
+    <button id="modalBtn"><img src="./svg/plus.svg" alt="add"></button>
+
+    <div id="modal-overlay" class="modal">
+
+        <div class="modal-content">
+
+            <h2>Ajouter un widget</h2>
+
+            <div class="btn-container">
+                <?php
+                    foreach ($widgets as $widget) {
+
+                        $iconPath = './svg/' . $widget['widget_content'];
+
+                        echo '<button onclick="selectWidget(' . $widget['widget_id'] . ')">';
+                        echo '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
+                        echo $widget['widget_title'];
+                        echo '</button>';
+                        
+                    }
+                ?>
+            </div>
+
+
+            <a href="javascript:void(0)" id="modal-exit"><img src="./svg/cross.svg" alt="closebtn"></a>
+
+        </div>
+
+    </div>
+
+  </section>
+
+
+    
 </body>
 
+<script src="./js/app.js"></script>
 </html>
