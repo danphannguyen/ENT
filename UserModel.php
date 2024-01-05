@@ -202,6 +202,50 @@ function editUser($id_user, $mail, $firstname, $lastname, $password, $phone) {
 
 }
 
+// Fonction d'édition d'un utilisateur
+function editUserAdmin($id_user, $mail, $firstname, $lastname, $password, $phone, $role, $tp, $promotion) {
+
+    $db = dbConnect();
+
+    // Initialiser la variable $hash à null
+    $hash = null;
+
+    // Si $password n'est pas vide, alors générer le hachage
+    if (!empty($password)) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    $query = "UPDATE users SET login_user = :mail, ";
+
+    // Ajouter le champ password_user uniquement si $password n'est pas vide
+    if (!empty($password)) {
+        $query .= "mdp_user = :pswd, ";
+    }
+
+    $query .= "prenom_user = :firstname, nom_user = :lastname, phone_user = :phone, ext_promotions = :promotion, ext_tp = :tp, ext_role = :role WHERE id_user = :id";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
+
+    // Ajouter le bind pour le mot de passe uniquement si $password n'est pas vide
+    if (!empty($password)) {
+        $stmt->bindValue(":pswd", $hash, PDO::PARAM_STR);
+    }
+
+    $stmt->bindValue(":firstname", $firstname, PDO::PARAM_STR);
+    $stmt->bindValue(":lastname", $lastname, PDO::PARAM_STR);
+    $stmt->bindValue(":phone", $phone, PDO::PARAM_STR);
+    $stmt->bindValue(":promotion", $promotion, PDO::PARAM_STR);
+    $stmt->bindValue(":tp", $tp, PDO::PARAM_STR);
+    $stmt->bindValue(":role", $role, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Exécution de la requête et retourne son état
+    return "L'utilisateur a été modifié avec succès.";
+
+}
+
 // Fonction de suppression d'un utilisateur
 function deleteUser($id_user) {
     try {
@@ -228,9 +272,9 @@ function register($mail, $password, $firstname, $lastname, $phonenumber, $role, 
         return "L adresse mail existe déjà";
     } else {
         if (addUser($mail, $password, $firstname, $lastname, $phonenumber, $role, $tp, $promotion)) {
-            return 'Inscription réussie';
+            return " L'Utilisateur a été ajouté avec succès ";
         } else {
-            return 'Erreur lors de l inscription';
+            return "Erreur lors de l'inscription";
         }
     }
 }

@@ -825,6 +825,10 @@ nav a:hover {
   transition: all 0.2s ease-in-out;
 }
 
+.editModal {
+  display: none;
+}
+
 #boAddButton {
   position: absolute;
   bottom: 3rem;

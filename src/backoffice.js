@@ -11,6 +11,22 @@ $("#userInformationModalClose").click(function () {
     $("#addUserModal").fadeOut();
 });
 
+$(".editTool").click(function () {
+    let buttonId = $(this).attr("id");
+    let userId = "#" + buttonId.replace("Button", "Modal");
+
+    $(".modalBg").fadeIn();
+    $(userId).fadeIn();
+});
+
+$(".profilModalClose").click(function () {
+    let modalId = $(this).attr("data-id");
+    modalId = "#editModalUser" + modalId;
+
+    $(".modalBg").fadeOut();
+    $(modalId).fadeOut();
+});
+
 // ===== Code pour afficher le champ de confirmation de mot de passe =====
 
 var newPasswordInput = $("#newUserPassword");
@@ -23,7 +39,21 @@ newPasswordInput.on("input", function () {
     // Vérifier si le champ était vide avant la frappe
     if (wasEmpty) {
         // Si c'est la première fois que l'utilisateur écrit dans le champ, afficher le champ de confirmation
-        $(".confirmPasswordContainer").fadeIn();
+        $("#newUserConfirm").fadeIn();
+    }
+
+    // Mettre à jour le statut wasEmpty
+    wasEmpty = newPasswordInput.val() === "";
+});
+
+$('.editUserPassword').on('input', function () {
+    id = $(this).attr('id')
+    id = id.replace('User', 'Confirm')
+
+    // Vérifier si le champ était vide avant la frappe
+    if (wasEmpty) {
+        // Si c'est la première fois que l'utilisateur écrit dans le champ, afficher le champ de confirmation
+        $("#" + id).fadeIn();
     }
 
     // Mettre à jour le statut wasEmpty
@@ -37,20 +67,68 @@ function validateForm() {
     let password = document.forms["NewUserInfo"]["newUserPassword"].value;
     let confirmPassword = document.forms["NewUserInfo"]["confirmNewUserPassword"].value;
 
+    // Vérifier la longueur minimale (8 caractères)
+    if (password.length < 8) {
+        alert("Le mot de passe doit avoir au moins 8 caractères.");
+        return false;
+    }
+
+    // Vérifier la présence d'au moins une lettre majuscule, une lettre minuscule et un chiffre
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+    if (!regex.test(password)) {
+        alert("Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un chiffre.");
+        return false;
+    }
+
     // Vérification que les deux champs sont identiques
     if (password != confirmPassword) {
-
-        // Si les deux champs ne sont pas identiques, afficher une alerte et empêcher la soumission du formulaire
         alert("Les mots de passe ne correspondent pas.");
         return false;
     }
+
+    // Le mot de passe est valide
+    return true;
+}
+
+function validateEditForm(id) {
+
+    let editPassword = document.getElementById('editUserPassword' + id).value
+    let editConfirmPassword = document.getElementById('confirmEditUserPassword' + id).value
+
+    // Vérifier si le mot de passe est vide
+    if (editPassword.trim() === "") {
+        // Le mot de passe est vide, aucune vérification supplémentaire nécessaire
+        return true;
+    }
+
+    // Vérifier la longueur minimale (8 caractères)
+    if (editPassword.length < 8) {
+        alert("Le mot de passe doit avoir au moins 8 caractères.");
+        return false;
+    }
+
+    // Vérifier la présence d'au moins une lettre majuscule, une lettre minuscule et un chiffre
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+    if (!regex.test(editPassword)) {
+        alert("Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un chiffre.");
+        return false;
+    }
+
+    // Vérification que les deux champs sont identiques
+    if (editPassword != editConfirmPassword) {
+        alert("Les mots de passe ne correspondent pas.");
+        return false;
+    }
+
+    // Le mot de passe est valide
+    return true;
 }
 
 // ===== Fonction pour confirmer la suppression d'un utilisateur =====
 
 // Ajouter un écouteur d'événements pour l'événement "submit" sur les formulaires de suppression
 $(".deleteForm").submit(function (event) {
-    
+
     // Empêcher la soumission du formulaire
     event.preventDefault();
 

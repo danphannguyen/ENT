@@ -35,11 +35,11 @@
                     break;
 
                 case "editUser":
-                    // edit user ici
+                    // Si on édite un utilisateur on récupère les données du formulaire et on les envois à la fonction editUser
+                    $log = editUserAdmin($_POST['idUser'], $_POST['editUserEmail'], $_POST['editUserPrenom'], $_POST['editUserNom'], $_POST['editUserPassword'], $_POST['editUserTelephone'], $_POST['editUserRole'], $_POST['editUserTp'], $_POST['editUserPromotion']);
                     break;
 
                 default:
-                    echo "Erreur";
                     break;
             }
         }
@@ -61,7 +61,7 @@
         <div id="navMiddle">
 
 
-            <form action="backoffice.php" method="get">
+            <form action="backoffice.php" method="post">
 
                 <input type="hidden" name="action" value="getUsers">
 
@@ -76,7 +76,7 @@
 
             </form>
 
-            <form action="backoffice.php" method="get">
+            <form action="backoffice.php" method="post">
                 <input type="hidden" name="action" value="getUsers">
                 <button type="submit" class="BoSubmit">
                     <div class="navIconContainer">
@@ -88,7 +88,7 @@
                 </button>
             </form>
 
-            <form action="backoffice.php" method="get">
+            <form action="backoffice.php" method="post">
                 <input type="hidden" name="action" value="getUsers">
                 <button type="submit" class="BoSubmit">
                     <div class="navIconContainer">
@@ -100,7 +100,7 @@
                 </button>
             </form>
 
-            <form action="backoffice.php" method="get">
+            <form action="backoffice.php" method="post">
                 <input type="hidden" name="action" value="getUsers">
                 <button type="submit" class="BoSubmit">
                     <div class="navIconContainer">
@@ -112,7 +112,7 @@
                 </button>
             </form>
 
-            <form action="backoffice.php" method="get">
+            <form action="backoffice.php" method="post">
                 <input type="hidden" name="action" value="getUsers">
                 <button type="submit" class="BoSubmit">
                     <div class="navIconContainer">
@@ -136,12 +136,12 @@
                 include('./boView/logView.php');
                 break;
             case "editUser":
+                include('./boView/logView.php');
                 break;
             case "addUser":
                 include('./boView/logView.php');
                 break;
             default:
-                echo "Erreur";
                 break;
         }
     }
@@ -161,6 +161,7 @@
                     include('./boView/getUsersView.php');
                     break;
                 case "editUser":
+                    include('./boView/getUsersView.php');
                     break;
                 case "deleteUser":
                     include('./boView/getUsersView.php');

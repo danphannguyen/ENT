@@ -12,7 +12,6 @@ Fontionnalités Dan Phan Nguyen :
 - Ajout d'une photo de profile
 - Modification des informations personnelles
 - Affichage du champs confirmation de mdp si besoin
-- Confirmation de mdp
 
 ==== backoffice.php ====
 - Affichage de tout les utilisateurs de la BDD
@@ -24,4 +23,6 @@ Fontionnalités Dan Phan Nguyen :
 ==== Sécurité ====
 - Toute les requêtes sont faite avec bindValue empéchant les injections SQL
 - Pour toutes les commandes Admin, on revérifie les permissions ce qui empèche que quelqu'un connaissant l'url puisse executer des commandes sans permissions
+- Mise en place d'une sécurité sur la longueur / les caractères contenus dans le mdp
+- Confirmation de mdp pour éviter les erreurs
 
