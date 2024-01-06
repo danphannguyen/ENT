@@ -12,6 +12,9 @@ Fontionnalités Dan Phan Nguyen :
 - Ajout d'une photo de profile
 - Modification des informations personnelles
 - Affichage du champs confirmation de mdp si besoin
+- Consultations des absences
+- Récap des heures d'absences selon des catégories
+- justification des absences directements en ligne
 
 ==== backoffice.php ====
 - Affichage de tout les utilisateurs de la BDD
