@@ -82,39 +82,49 @@ $widgets = getAvailableWidgets();
     </nav>
 
 
-  <section class="dashboard-main">
+<section class="dashboard-main">
 
-    <button id="modalBtn"><img src="./svg/plus.svg" alt="add"></button>
-
-    <div id="modal-overlay" class="modal">
-
-        <div class="modal-content">
-
-            <h2>Ajouter un widget</h2>
-
-            <div class="btn-container">
-                <?php
-                    foreach ($widgets as $widget) {
-
-                        $iconPath = './svg/' . $widget['widget_content'];
-
-                        echo '<button onclick="selectWidget(' . $widget['widget_id'] . ')">';
-                        echo '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
-                        echo $widget['widget_title'];
-                        echo '</button>';
-                        
-                    }
-                ?>
-            </div>
-
-
-            <a href="javascript:void(0)" id="modal-exit"><img src="./svg/cross.svg" alt="closebtn"></a>
+        <div class="widgetContainer">
 
         </div>
 
-    </div>
+        <div class="add-widget">
+            <button id="modalBtn"><img src="./svg/plus.svg" alt="add"></button>
+        </div>
 
-  </section>
+        <div id="modal-overlay" class="modal">
+
+            <div class="modal-content">
+
+                <h2>Ajouter un widget</h2>
+
+                <div class="btn-container">
+                    <?php
+                        $userWidgets = getUserWidgets($_SESSION['id']);
+
+                        foreach ($widgets as $widget) {
+                            $iconPath = './svg/' . $widget['widget_content'];
+                            $buttonHtml = '<button data-widget-id="' . $widget['widget_id'] . '">';
+                            $buttonHtml .= '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
+                            $buttonHtml .= $widget['widget_title'];
+                            $buttonHtml .= '</button>';
+                        
+                            // Vérifiez si le widget fait partie des widgets de l'utilisateur
+                            if (in_array($widget['widget_id'], $userWidgets)) {
+                                echo $buttonHtml;
+                            }
+                        }
+                    ?>
+                </div>
+
+                <a href="javascript:void(0)" id="modal-exit"><img src="./svg/cross.svg" alt="closebtn"></a>
+
+            </div>
+
+        </div>
+
+
+</section>
 
 
     

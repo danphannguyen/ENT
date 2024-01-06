@@ -108,32 +108,7 @@ function addUser($mail, $password, $firstname, $lastname)
     return $stmt->execute();
 }
 
-//fonction pour ajouter des widgets 
-
-function saveWidget($widget)
-{
-    $db = dbConnect();
-    $insert = $db->prepare('INSERT INTO save_widget(user_id, widget_id) VALUES(?, ?)');
-    $insert->execute(array($_SESSION['id'], $widget));
-    return true;
-}
-
-function getSaveWidget()
-{
-    $db = dbConnect();
-    $reqSave = $db->prepare('SELECT * FROM save_widget WHERE user_id = ?');
-    $reqSave->execute(array($_SESSION['id']));
-    $saveWidget = $reqSave->fetchAll();
-    $saveWidgetId = array_column($saveWidget, 'widget_id');
-    
-    // Utilisez la fonction implode pour construire la liste d'IDs sous forme de chaîne
-    $placeholders = rtrim(str_repeat('?,', count($saveWidgetId)), ',');
-
-    $reqSaveWidget = $db->prepare("SELECT * FROM widget WHERE widget_id IN ($placeholders)");
-    $reqSaveWidget->execute($saveWidgetId);
-
-    return $reqSaveWidget;
-}
+//=================fonction pour ajouter des widgets 
 
 function deleteSaveWidget($widget)
 {
@@ -149,4 +124,20 @@ function getAvailableWidgets()
     $reqWidgets = $db->query('SELECT * FROM widget');
     return $reqWidgets->fetchAll();
     include 'dashboard.php';
+}
+
+function saveUserWidget($userId, $widgetId)
+{
+    $db = dbConnect();
+    $insert = $db->prepare('INSERT INTO save_widget(user_id, widget_id) VALUES(?, ?)');
+    $insert->execute(array($userId, $widgetId));
+    return true;
+}
+
+function getUserWidgets($userId)
+{
+    $db = dbConnect();
+    $reqWidgets = $db->prepare('SELECT widget_id FROM save_widget WHERE user_id = ?');
+    $reqWidgets->execute(array($userId));
+    return $reqWidgets->fetchAll(PDO::FETCH_COLUMN);
 }
