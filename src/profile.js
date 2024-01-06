@@ -22,6 +22,19 @@ $("#userPhotoModalClose").click(function () {
     $("#userPhotoModal").fadeOut();
 });
 
+$(".justifButton").click(function () {
+    let absId = $(this).attr("data-id");
+    $("#id_absence").val(absId);
+
+    $(".modalBg").fadeIn();
+    $("#userJustifModal").fadeIn();
+});
+
+$("#userJustifModalClose").click(function () {
+    $(".modalBg").fadeOut();
+    $("#userJustifModal").fadeOut();
+});
+
 // ===== Code pour afficher le champ de confirmation de mot de passe =====
 
 var newPasswordInput = $("#newPassword");

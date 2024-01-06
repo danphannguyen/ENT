@@ -100,6 +100,25 @@ function getUserInfo($id)
     return $stmt->fetchall(PDO::FETCH_ASSOC);
 }
 
+function getUserAbs($id) {
+    $db = dbConnect();
+
+    $query = "SELECT
+        absences.*
+    FROM
+        absences
+    JOIN
+        users ON absences.ext_user = users.id_user
+    WHERE
+        users.id_user = :id_session;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":id_session", $id, PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetchall(PDO::FETCH_ASSOC);
+}
+
 // Fonction de récupération de tous les rôles
 function getAllRole() {
     $db = dbConnect();
@@ -331,4 +350,36 @@ function addImage($id, $image)
     } else {
         return "";
     }
+}
+
+// Fonction de modification de la photo de profil dans le dossier /uploads
+function addJustifImage($id, $image)
+{
+    $uploadDir = "uploads/";
+    $newFileName = "Justif_" . $id . ".png";
+    $uploadFile = $uploadDir . basename($newFileName);
+
+    // Déplacez le fichier vers le répertoire d'upload
+    if (move_uploaded_file($image, $uploadFile)) {
+        return $uploadFile;
+    } else {
+        return "";
+    }
+}
+
+// Fonction de modification du path de la photo de profil
+function editUserJustif ($id_abs, $path) {
+
+    $db = dbConnect();
+
+    $query = "UPDATE absences SET justificationphoto = :photo, isjustifie = :isjustifie WHERE id_absence = :id";
+
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":photo", $path, PDO::PARAM_STR);
+    $stmt->bindValue(":isjustifie", 1, PDO::PARAM_STR);
+    $stmt->bindValue(":id", $id_abs, PDO::PARAM_STR);
+
+    // Exécution de la requête et retourne son état
+    return $stmt->execute();
+
 }
