@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
+
+
+/* ============== GLOBAL ============== */
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #D9D9D9;
+    color: var(--clr-text) !important;
+}
+
+.container {
+	display: grid;
+	grid-template-areas: 
+    "header header header"
+    "nav section aside"
+    "footer footer footer";
+	grid-template-rows: 80px 1fr 50px;
+	grid-template-columns: 0.8fr 10fr 3.1fr;
+	grid-gap: 30px;
+    height: 100vh;  
+}
+
+nav { 
+    margin-top: 3vh;
+    height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    border-radius: 0px 16px 16px 0px;
+    box-shadow: 5px 5px 50px 6px rgba(0,0,0,0.10);
+    z-index: 10;
+}
+      
+      nav a {
+        color: #000;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.625rem;
+        font-weight: 600;
+      }
+      
+      nav a:hover {
+        cursor: pointer;
+      }
+      
+      #navIconLogo {
+        filter: invert(1);
+      }
+      
+      .navIconBg2 {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border 0.3s ease;
+        border: 1px solid var(--clr-forground);
+      }
+      
+      .navIconBg2 img {
+        width: 40px;
+        height: 40px;
+        transition: filter 0.3s ease;
+      }
+      
+      .navIconBg2:hover {
+        border: 1px solid var(--clr-text);
+      }
+      
+      #navMiddle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .navIconContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2px;
+      }
+      
+      .navIconBg {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+      }
+      
+      .navIconBg img {
+        width: 24px;
+        height: 24px;
+        transition: filter 0.3s ease;
+      }
+      
+      .navIconContainer:hover .navIconBg {
+        background-color: var(--clr-text);
+      }
+      
+      .navIconContainer:hover img {
+        filter: invert(1);
+      }
+
+
+section {
+    margin-top: -8.3vh;
+	  grid-area: section;
+    height: 94vh;
+    z-index: 10;    
+}
+
+.ade {
+    background: #F2F2F2;
+    grid-area: section; 
+    height: 85vh;  
+    border-radius: 15px;
+    box-shadow: 5px 5px 50px 6px rgba(0,0,0,0.10);
+    z-index: 10;
+}
+
+aside {
+    margin-top: -8.3vh;
+    height: 94vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+	  background: #FFF;
+	  grid-area: aside; 
+    border-radius: 15px 0 0 15px; 
+    box-shadow: -5px 5px 50px 6px rgba(0,0,0,0.10);
+}
+
+.addLogo {
+  display: flex;
+  margin-left: auto;
+  margin-top: 30px;
+  width: 42px;
+}
+
+.addLogo:hover {
+  cursor: pointer;
+}
+
+.bank {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -25px;
+}
+
+.bank h1 {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: #00526A;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.bank h2 {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: -20px;
+}
+
+.bankLogo {
+  width: 103px;
+}
+
+.qrLogo {
+  width: 190px;
+}
+
+.historyLogo {
+  width: 36px;
+}
+
+.qr {
+  display: flex;
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 25px;
+  padding-top: 0;
+  padding-bottom: 10px;
+  width: 220px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.10);
+}
+
+.qr h1 {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+.account-info {
+  margin-top: -10px;
+}
+
+.button {
+  display: flex;
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #FFF;
+  background-color: #0EBEF7;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #0ea2d4;
+}
+
+.history-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.history h1 {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.history hr {
+  height: 2px;
+  border: 1px solid #B6B6B6;
+}
+
+.transactions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.transactions div {
+  text-align: center;
+}
+
+.transactions h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #940000;
+}
+
+.transactions h2 span {
+  color: #007F0D;
+}
+
+.transactions p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #000;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	background: #F2F2F2;
+	grid-area: footer;
+  height: 6.2vh;
+  margin-top: 25px;
+  border-radius: 15px; 
+  box-shadow: 5px 5px 50px 6px rgba(0,0,0,0.10);
+}
+
+.leftLogo {
+  width: 12px;
+}
+
+.rightLogo {
+  width: 12px;
+}
+
+.leftLogo:hover, .rightLogo:hover {
+  cursor: pointer;
+  width: 14px;
+}
+
+
+
+.footer h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.footer h1 span {
+  font-weight: 700;
+}
+
+.footer h1:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+header, nav, aside, .footer {
+	padding: 15px;
+}
+
+.footer hr {
+  height:130%; 
+  width:0;
+  border: 1px solid #b6b6b6;
+}
+
+.calendar {
+  background: rgb(255, 255, 255);
+  max-width: 400px;
+  margin: 1vh 1vw 1vh 1vw;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 5px 5px 50px 6px rgba(0,0,0,0.10);
+}
+
+.calendar-body {
+  display: grid;
+}
+
+.week-header {
+  color: #000;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.month {
+  text-align: center;
+}
+
+.week .day:hover:not(.day-active) {
+  cursor: default;
+}
+
+.week-header {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    z-index: 10;
+}
+
+.month {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 4rem;
+    margin-top: -25px;
+    margin-bottom: -20px;
+    color: #DEDEDE;
+    z-index: 9;
+}
+
+.day {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.day-active {
+    color: white;
+    background-color: #000;
+}
+
+.day:hover:not(.day-active) {
+    background-color: #00000020;
+}
+
+.content-table {
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  font-weight: normal;
+  font-size: 0.9em;
+  min-width: 100%;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+.content-table thead tr {
+  background-color: #E10B18;
+  color: #FFF;
+  text-align: center;
+}
+
+.content-table thead th h1 {
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+.content-table th {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.content-table td {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.content-table tbody .noborder {
+  border: none;
+}
+
+.content-table tbody td {
+  border-right: solid #E10B18 2px;
+  color: #4F4F4F;
+}
+
+.content-table tbody td h1 {
+  color: #E10B18;
+  font-weight: 600;
+}
+
+@media screen and (max-height: 950px) {
+  .content-table td {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+} 
+
+@media screen and (max-height: 900px) {
+  .content-table td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+} 
+
+@media screen and (max-height: 835px) {
+  .content-table td {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+} 
+
+
+
+  
