@@ -1,1 +1,0 @@
-<span id="addUserLog"> <?php echo $log; ?> </span>
