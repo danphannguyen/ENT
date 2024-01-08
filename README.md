@@ -6,6 +6,8 @@ Fontionnalités Dan Phan Nguyen :
 - Affichage de message d'erreur en cas de problème
 - Possibilité d'afficher ou de cacher le mdp
 
+==== index.php ====
+
 ==== profile.php ====
 - Affichage des informations liées au compte
 - Navbar : Affichage de la photo de profile
