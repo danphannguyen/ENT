@@ -100,19 +100,12 @@ $widgets = getAvailableWidgets();
 
                 <div class="btn-container">
                     <?php
-                        $userWidgets = getUserWidgets($_SESSION['id']);
-
                         foreach ($widgets as $widget) {
                             $iconPath = './svg/' . $widget['widget_content'];
-                            $buttonHtml = '<button data-widget-id="' . $widget['widget_id'] . '">';
-                            $buttonHtml .= '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
-                            $buttonHtml .= $widget['widget_title'];
-                            $buttonHtml .= '</button>';
-                        
-                            // Vérifiez si le widget fait partie des widgets de l'utilisateur
-                            if (in_array($widget['widget_id'], $userWidgets)) {
-                                echo $buttonHtml;
-                            }
+                            echo '<button data-widget-id="' . $widget['widget_id'] . '" class="widget-btn">';
+                            echo '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
+                            echo $widget['widget_title'];
+                            echo '</button>';
                         }
                     ?>
                 </div>

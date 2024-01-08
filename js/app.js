@@ -22,8 +22,8 @@ function selectWidget(widgetId) {
         case '1':
             widgetDiv.classList.add('widget');
             widgetDiv.innerHTML = `
+            <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <div class="widget-header">
-                    <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                     <a class="goto" href="calendrier.php"><img src="./svg/goto.svg" alt="link to"></a>
                     <h3>Calendrier</h3>
                 </div>
@@ -34,9 +34,9 @@ function selectWidget(widgetId) {
         case '2':
             widgetDiv.classList.add('widget');
             widgetDiv.innerHTML = `
-                <div class="widget-header">
-                <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
+            <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <a class="goto" href="crous.php"><img src="./svg/goto.svg" alt="link to"></a>
+                <div class="widget-header">
                     <h3>Crous</h3>
                 </div>
                 <div class="widget-content">
@@ -46,8 +46,8 @@ function selectWidget(widgetId) {
         case '3':
             widgetDiv.classList.add('widget');
             widgetDiv.innerHTML = `
+            <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <div class="widget-header">
-                <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <a class="goto" href="note.php"><img src="./svg/goto.svg" alt="link to"></a>
                     <h3>Notes</h3>
                 </div>
@@ -58,8 +58,8 @@ function selectWidget(widgetId) {
         case '4':
             widgetDiv.classList.add('widget');
             widgetDiv.innerHTML = `
+            <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <div class="widget-header">
-                <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <a class="goto" href="emploi.php"><img src="./svg/goto.svg" alt="link to"></a>
                     <h3>Cours</h3>
                 </div>

@@ -516,4 +516,6 @@ nav a:hover {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  position: absolute;
+  margin: 15px;
 }
