@@ -10,13 +10,25 @@ document.getElementById("modalBtn").addEventListener("click", toggleModal);
 document.getElementById("modal-exit").addEventListener("click", toggleModal);
 
 
-//Création des widgets
+// Fonction pour sauvegarder un widget côté serveur
+function saveWidget(widgetId) {
 
+    window.location.href = "save_widget.php?id=" + widgetId;
+}
+
+// Création des widgets
 function selectWidget(widgetId) {
     console.log('Widget sélectionné :', widgetId);
 
-    var widgetDiv = document.createElement('div');
+    var existingWidgets = document.querySelectorAll('.widget-container[data-widget-id="' + widgetId + '"]');
+    if (existingWidgets.length > 0) {
+        alert("Ce widget est déjà ajouté !");
+        return;
+    }
+
+   var widgetDiv = document.createElement('div');
     widgetDiv.classList.add('widget-container');
+    widgetDiv.setAttribute('data-widget-id', widgetId);
 
     switch (widgetId) {
         case '1':
@@ -72,15 +84,23 @@ function selectWidget(widgetId) {
     var widgetContainer = document.querySelector('.widgetContainer');
     widgetContainer.appendChild(widgetDiv);
 
+    // Enregistre le widget côté serveur
+    saveWidget(widgetId);
+
     toggleModal();
 }
 
-// Fonction pour supprimer un widget spécifique
 function deleteWidget(widget) {
+    var widgetIdToDelete = widget.getAttribute('data-widget-id');
+
+    // Supprime le widget côté client
     widget.remove();
+
+    // Supprime le widget côté serveur
+    window.location.href = "delete_widget.php?id=" + widgetIdToDelete;
 }
 
-//écouteurs d'événements pour chaque bouton de widget
+// Écouteurs d'événements pour chaque bouton de widget
 var widgetButtons = document.querySelectorAll('.btn-container .widget-btn');
 widgetButtons.forEach(function (button) {
     button.addEventListener('click', function () {

@@ -1,9 +1,17 @@
 <?php
-require_once 'UserModel.php';
+require_once 'usermodel.php';
 
-// Appeler la fonction getAvailableWidgets() après l'inclusion du fichier UserModel.php
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $widgets = getAvailableWidgets();
 
+// Charge les widgets enregistrés pour cet utilisateur
+$userId = $_SESSION['id'];
+$userWidgets = getUserWidgets($userId);
 ?>
 
 
@@ -85,6 +93,19 @@ $widgets = getAvailableWidgets();
 <section class="dashboard-main">
 
         <div class="widgetContainer">
+
+            <?php
+                foreach ($userWidgets as $userWidget) {
+                    $widgetId = $userWidget['widget_id'];
+                    $widget = getUserWidgets($widgetId);
+                    $iconPath = './svg/' . $widget['widget_content'];
+                    echo '<div class="widget">';
+                    echo '<a href="delete_widget.php?id=' . $widgetId . '"><img class="delete-widget" src="./svg/cross.svg" alt="delete"></a>';
+                    echo '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
+                    echo '<h3>' . $widget['widget_title'] . '</h3>';
+                    echo '</div>';
+                }
+            ?>
 
         </div>
 

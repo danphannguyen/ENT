@@ -123,7 +123,6 @@ function getAvailableWidgets()
     $db = dbConnect();
     $reqWidgets = $db->query('SELECT * FROM widget');
     return $reqWidgets->fetchAll();
-    include 'dashboard.php';
 }
 
 function saveUserWidget($userId, $widgetId)
