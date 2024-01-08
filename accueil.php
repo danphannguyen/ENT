@@ -43,73 +43,361 @@
 
     $absNJ = explode(':', $absNJ);
 
+    include('./View/navbarView.php');
+
     ?>
-
-    <nav>
-
-        <div class="navTop">
-            <div class="navUnivLogo">
-                <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
-            </div>
-        </div>
-
-        <div id="navMiddle">
-            <a href="./accueil.php">
-                <div class="navIconContainer">
-                    <div class="navIconBg">
-                        <img src="./svg/accueil.svg" alt="">
-                    </div>
-                    <span>Accueil</span>
-                </div>
-            </a>
-            <a href="#">
-                <div class="navIconContainer">
-                    <div class="navIconBg">
-                        <img src="./svg/dashboard.svg" alt="">
-                    </div>
-                    <span>Dashboard</span>
-                </div>
-            </a>
-            <a href="#">
-                <div class="navIconContainer">
-                    <div class="navIconBg">
-                        <img src="./svg/calendirer.svg" alt="">
-                    </div>
-                    <span>Calendrier</span>
-                </div>
-            </a>
-            <a href="#">
-                <div class="navIconContainer">
-                    <div class="navIconBg">
-                        <img src="./svg/cours.svg" alt="">
-                    </div>
-                    <span>Cours</span>
-                </div>
-            </a>
-            <a href="#">
-                <div class="navIconContainer">
-                    <div class="navIconBg">
-                        <img src="./svg/chat.svg" alt="">
-                    </div>
-                    <span>Chat</span>
-                </div>
-            </a>
-        </div>
-
-        <div class="navBottom">
-            <a href="./profile.php">
-                <div class="navIconBg2">
-                    <img src="<?php echo $result[0]['photo_user']; ?>" alt="">
-                </div>
-            </a>
-        </div>
-
-    </nav>
 
     <section id="accueilSection">
 
         <div id="accueilBodyContainer">
-            
+
+            <div id="accueilHeader">
+                <div id="accueilHeaderLeft">
+                    <span>Bienvenue,</span>
+                    <br>
+                    <span><?php echo $result[0]['prenom_user'] ?></span>
+                </div>
+
+                <div id="accueilHeaderRight">
+                    <span>Vous avez 2 devoirs à rendre cette semaine</span>
+                    <img src="./img/progressBar.png" alt="">
+                </div>
+            </div>
+
+            <div id="accueilCours">
+                <div id="accueilCoursHeader">
+                    <div class="accueilBodyLabel"><span>Enseignements</span></div>
+                    <form action="" id="accueilCoursSearchbar">
+                        <input type="text">
+                        <div id="searchCoursLogo"><img src="./svg/search.svg" alt=""></div>
+                    </form>
+                    <form action="">
+                        <select name="" id="accueilCoursSelect">
+                            <option disabled selected value="">Compétences</option>
+                            <option value="">Développer</option>
+                            <option value="">Entreprendre</option>
+                            <option value="">Comprendre</option>
+                            <option value="">Exprimer</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div id="accueilCoursWrapper">
+
+                    <div class="coursTemplateContainer">
+                        <div class="coursContentBg">
+                            <span>Deploiement de services</span>
+                            <img src="./svg/star.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="coursTemplateContainer">
+                        <div class="coursContentBg">
+                            <span>Deploiement de services</span>
+                            <img src="./svg/star.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="coursTemplateContainer">
+                        <div class="coursContentBg">
+                            <span>Deploiement de services</span>
+                            <img src="./svg/star.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="coursTemplateContainer">
+                        <div class="coursContentBg">
+                            <span>Deploiement de services</span>
+                            <img src="./svg/star.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="coursTemplateContainer">
+                        <div class="coursContentBg">
+                            <span>Deploiement de services</span>
+                            <img src="./svg/star.svg" alt="">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="ade">
+                <table class="fixed_headers">
+                    <thead>
+                        <tr>
+                            <th class="tab-month">janvier</th>
+                            <th>L <br><span>22</span></th>
+                            <th>M <br><span>23</span></th>
+                            <th>M <br><span>24</span></th>
+                            <th>J <br><span>25</span></th>
+                            <th>V <br><span>26</span></th>
+                            <th>S <br><span>27</span></th>
+                            <th>D <br><span>28</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08:00</td>
+                        </tr>
+                        <tr>
+                            <td>09:00</td>
+                            <td class="green" rowspan="4">Autonomie
+                                SAE 3 -
+                                ABCD <br>
+                                <span>IUC 121 <br>
+                                    IUC 126</span>
+                            </td>
+                            <td class="green" rowspan="4">Autonomie
+                                SAE 3 -
+                                ABCD <br>
+                                <span>IUC 121 <br>
+                                    IUC 126</span>
+                            </td>
+                            <td class="rose" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="orange" rowspan="2">R 3.13
+                                Dévpt <br>
+                                Back - AB
+                                IUC 120
+                            </td>
+                            <td class="lilas" rowspan="2">SAE 3.02.A
+                                Produire des
+                                contenus - AB
+                                IUC 026
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10:00</td>
+                        </tr>
+                        <tr>
+                            <td>11:00</td>
+                            <td class="mauve" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="fluo" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="turquoise" rowspan="2">R 3.16
+                                Gestion de
+                                Projet - AB
+                                IUC 157
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12:00</td>
+                        </tr>
+                        <tr>
+                            <td>13:00</td>
+                        </tr>
+                        <tr>
+                            <td>14:00</td>
+                            <td class="turquoise" rowspan="2">R 3.16
+                                Gestion de
+                                Projet - AB
+                                IUC 157
+                            </td>
+                            <td class="green" rowspan="4">
+                                Autonomie
+                                SAE 3 -
+                                ABCD <br>
+                                <span>IUC 121 <br>
+                                    IUC 126</span>
+                            </td>
+                            <td class="rose" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="orange-clair" rowspan="2">R 3.16
+                                Gestion de
+                                Projet - AB
+                                IUC 157
+                            </td>
+                            <td class="rose" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>15:00</td>
+                        </tr>
+                        <tr>
+                            <td>16:00</td>
+                            <td class="ciel" rowspan="2">R 3.13
+                                Dévpt <br>
+                                Back - AB
+                                IUC 120
+                            </td>
+                            <td class="lilas" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="violet" rowspan="2">SAE 3.02.A
+                                Anglais <br>
+                                Web - AB
+                                IUC 126
+                            </td>
+                            <td class="ciel" rowspan="2">R 3.13
+                                Dévpt <br>
+                                Back - AB
+                                IUC 120
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>17:00</td>
+                        </tr>
+                        <tr class="noborder">
+                            <td>18:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="accueilNote">
+                <div class="accueilBodyLabel"><span>Dernières Notes</span></div>
+                <div class="noteWrapper">
+                    <div class="div1">Cours</div>
+                    <div class="div2">Activité</div>
+                    <div class="div3">Note</div>
+                    <div class="div4">Date</div>
+
+                    <div class="div5">
+                        <div class="hr"></div>
+                    </div>
+
+                    <div class="div6">Représentation et trait ...</div>
+                    <div class="div7">Contrôle 2</div>
+                    <div class="div8"><span class="accueilNoteSpan">13,5/20</span></div>
+                    <div class="div9">23 novembre</div>
+
+                    <div class="div10">PPP</div>
+                    <div class="div11">Rapport de stage</div>
+                    <div class="div12"><span class="accueilNoteSpan">14/20</span></div>
+                    <div class="div13">21 novembre</div>
+
+                    <div class="div14">Représentation et trait ...</div>
+                    <div class="div15">Contrôle 1</div>
+                    <div class="div16"><span class="accueilNoteSpan">2/10</span></div>
+                    <div class="div17">3 octobre</div>
+
+                    <div class="div18">Développement web</div>
+                    <div class="div19">Interro</div>
+                    <div class="div20"><span class="accueilNoteSpan">10/20</span></div>
+                    <div class="div21">26 septembre</div>
+                </div>
+
+                <div id="accueilNoteFooter">
+                    <a href="" id="accueilNoteButton">
+                        <span>Voir plus</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="accueilActualite">
+                <div id="accueilActualiteHeader">Actualités</div>
+                <div id="accueilActualiteWrapper">
+
+                    <div class="div1 actualiteTemplate">
+                        <div class="actualiteHeader">
+                            <img src="./svg/news.svg" alt="">
+                            <div>
+                                <span>Figma c’est trop dur</span>
+                                <span>08/12/23 : 10h25</span>
+                            </div>
+                        </div>
+                        <div class="actualiteBody">
+                            <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
+                        </div>
+                        <div class="actualiteFooter">
+                            <a href="">
+                                <span>Découvrir plus</span>
+                                <img src="" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="div2">
+                        <div class="hr-v"></div>
+                    </div>
+
+                    <div class="div3 actualiteTemplate">
+                        <div class="actualiteHeader">
+                            <img src="./svg/news.svg" alt="">
+                            <div>
+                                <span>Figma c’est trop dur</span>
+                                <span>08/12/23 : 10h25</span>
+                            </div>
+                        </div>
+                        <div class="actualiteBody">
+                            <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
+                        </div>
+                        <div class="actualiteFooter">
+                            <a href="">
+                                <span>Découvrir plus</span>
+                                <img src="" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="div4">
+                        <div class="hr-v"></div>
+                    </div>
+
+                    <div class="div5 actualiteTemplate">
+                        <div class="actualiteHeader">
+                            <img src="./svg/news.svg" alt="">
+                            <div>
+                                <span>Figma c’est trop dur</span>
+                                <span>08/12/23 : 10h25</span>
+                            </div>
+                        </div>
+                        <div class="actualiteBody">
+                            <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
+                        </div>
+                        <div class="actualiteFooter">
+                            <a href="">
+                                <span>Découvrir plus</span>
+                                <img src="" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="div6">
+                        <div class="hr-v"></div>
+                    </div>
+
+                    <div class="div7 actualiteTemplate">
+                        <div class="actualiteHeader">
+                            <img src="./svg/news.svg" alt="">
+                            <div>
+                                <span>Figma c’est trop dur</span>
+                                <span>08/12/23 : 10h25</span>
+                            </div>
+                        </div>
+                        <div class="actualiteBody">
+                            <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
+                        </div>
+                        <div class="actualiteFooter">
+                            <a href="">
+                                <span>Découvrir plus</span>
+                                <img src="" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <div id="accueilAsideContainer">
