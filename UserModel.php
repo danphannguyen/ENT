@@ -2,7 +2,7 @@
 
 function dbConnect()
 {
-    return new PDO('mysql:host=localhost;dbname=dphannguyen_ent;port=8889', 'root', 'root');
+    return new PDO('mysql:host=109.234.161.199;dbname=dphannguyen_ent;port=3306,charest=utf8', 'dphannguyen_entadmin', 'testbdd01');
 }
 
 // Fonction de connexion
