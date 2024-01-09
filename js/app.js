@@ -12,8 +12,7 @@ document.getElementById("modal-exit").addEventListener("click", toggleModal);
 
 // Fonction pour sauvegarder un widget côté serveur
 function saveWidget(widgetId) {
-
-    window.location.href = "save_widget.php?id=" + widgetId;
+    window.location.href = "save_widget.php?user_id=" + userId + "&widget_id=" + widgetId;
 }
 
 // Création des widgets
@@ -90,14 +89,31 @@ function selectWidget(widgetId) {
     toggleModal();
 }
 
+//supprimer un widget spécifique
 function deleteWidget(widget) {
-    var widgetIdToDelete = widget.getAttribute('data-widget-id');
+    var widgetId = widget.getAttribute('data-widget-id');
 
-    // Supprime le widget côté client
+    //côté serveur
+    deleteSaveWidget(widgetId);
+
     widget.remove();
+}
 
-    // Supprime le widget côté serveur
-    window.location.href = "delete_widget.php?id=" + widgetIdToDelete;
+function deleteSaveWidget(widgetId) {
+    $.ajax({
+        url: 'delete_widget.php',
+        type: 'POST',
+        data: { widgetId: widgetId },
+        success: function (response) {
+            // Faire quelque chose si nécessaire après la suppression côté serveur
+            // console.log('Widget supprimé côté serveur');
+            console.log(response);
+        },
+        error: function (error) {
+            // Afficher une erreur si la requête n'a pas abouti
+            console.error('Erreur lors de la suppression côté serveur', error);
+        }
+    });
 }
 
 // Écouteurs d'événements pour chaque bouton de widget
@@ -108,4 +124,3 @@ widgetButtons.forEach(function (button) {
         selectWidget(widgetId);
     });
 });
-

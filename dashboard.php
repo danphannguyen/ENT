@@ -1,7 +1,8 @@
 <?php
-require_once 'usermodel.php';
-
 session_start();
+require_once 'UserModel.php';
+
+
 if (!isset($_SESSION['id'])) {
     header("Location: login.php");
     exit();
@@ -13,6 +14,10 @@ $widgets = getAvailableWidgets();
 $userId = $_SESSION['id'];
 $userWidgets = getUserWidgets($userId);
 ?>
+
+<script>
+     var userId = <?php echo json_encode($_SESSION['id']); ?>;  // Récupère le user_id côté serveur
+</script>
 
 
 <!DOCTYPE html>
@@ -93,20 +98,12 @@ $userWidgets = getUserWidgets($userId);
 <section class="dashboard-main">
 
         <div class="widgetContainer">
-
-            <?php
-                foreach ($userWidgets as $userWidget) {
-                    $widgetId = $userWidget['widget_id'];
-                    $widget = getUserWidgets($widgetId);
-                    $iconPath = './svg/' . $widget['widget_content'];
-                    echo '<div class="widget">';
-                    echo '<a href="delete_widget.php?id=' . $widgetId . '"><img class="delete-widget" src="./svg/cross.svg" alt="delete"></a>';
-                    echo '<img src="' . $iconPath . '" alt="' . $widget['widget_title'] . '">';
-                    echo '<h3>' . $widget['widget_title'] . '</h3>';
-                    echo '</div>';
-                }
-            ?>
-
+        <?php
+            // Charger les widgets associés à l'utilisateur actuel
+            foreach ($userWidgets as $widget) {
+                echo generateWidgetDiv($widget);
+            }
+        ?>
         </div>
 
         <div class="add-widget">
@@ -143,6 +140,6 @@ $userWidgets = getUserWidgets($userId);
 
     
 </body>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="./js/app.js"></script>
 </html>

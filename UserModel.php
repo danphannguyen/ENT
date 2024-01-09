@@ -110,12 +110,17 @@ function addUser($mail, $password, $firstname, $lastname)
 
 //=================fonction pour ajouter des widgets 
 
-function deleteSaveWidget($widget)
+function deleteSaveWidget($widgetId)
 {
-    $db = dbConnect();
-    $delete = $db->prepare('DELETE FROM save_widget WHERE user_id = ? AND widget_id = ?');
-    $delete->execute(array($_SESSION['id'], $widget));
-    return true;
+    session_start();
+    try {
+        $db = dbConnect();
+        $delete = $db->prepare('DELETE FROM save_widget WHERE user_id = ? AND save_widget_id = ?');
+        $delete->execute(array($_SESSION['id'], $widgetId));
+        return $_SESSION['id'] . ' ' . $widgetId;
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
 }
 
 function getAvailableWidgets()
@@ -136,7 +141,30 @@ function saveUserWidget($userId, $widgetId)
 function getUserWidgets($userId)
 {
     $db = dbConnect();
-    $reqWidgets = $db->prepare('SELECT widget_id FROM save_widget WHERE user_id = ?');
+    $reqWidgets = $db->prepare('SELECT * FROM save_widget WHERE user_id = ?');
     $reqWidgets->execute(array($userId));
-    return $reqWidgets->fetchAll(PDO::FETCH_COLUMN);
+    return $reqWidgets->fetchAll();
+}
+
+function generateWidgetDiv($widgetUser)
+{
+    $db = dbConnect();
+    $reqWidget = $db->prepare('SELECT * FROM widget WHERE widget_id = ?');
+    $reqWidget->execute(array($widgetUser['widget_id']));
+    $widget = $reqWidget->fetch(PDO::FETCH_ASSOC);
+
+    if ($widget) {
+        $img = './img/' . $widget['widget_img'];
+
+        return '<div class="widget-container" data-widget-id="' . $widgetUser['save_widget_id'] . '">
+                    <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
+                    <div class="widget-header">
+                        <a class="goto" href="' . $widget['widget_link'] . '"><img src="./svg/goto.svg" alt="link to"></a>
+                        <h3>' . $widget['widget_title'] . '</h3>
+                    </div>
+                    <div class="widget-content">
+                        <img src="' . $img . '" alt="' . $widget['widget_title'] . '">
+                    </div>
+                </div>';
+    }
 }
