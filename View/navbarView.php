@@ -51,7 +51,7 @@
 <div class="navBottom">
     <a href="./profile.php">
         <div class="navIconBg2">
-            <img src="<?php echo $result[0]['photo_user']; ?>" alt="">
+            <img src="<?php echo $result[0]['photo_user']; ?>" alt="vers profile">
         </div>
     </a>
 </div>

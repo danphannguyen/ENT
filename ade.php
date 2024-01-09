@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/ade.css" />
-  <title>Emploi du temps</title>
+  <title>ENT | ADE</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     include('./View/navbarView.php');
   } else {
     header('Location: login.php');
-  } 
+  }
   ?>
 
   <div class="container">

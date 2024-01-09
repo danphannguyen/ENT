@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <title>Document</title>
+    <title>ENT | Home</title>
 </head>
 
 <body>
@@ -53,9 +53,11 @@
 
             <div id="accueilHeader">
                 <div id="accueilHeaderLeft">
-                    <span>Bienvenue,</span>
-                    <br>
-                    <span><?php echo $result[0]['prenom_user'] ?></span>
+                    <h1>
+                        <span>Bienvenue,</span>
+                        <br>
+                        <span><?php echo $result[0]['prenom_user'] ?></span>
+                    </h1>
                 </div>
 
                 <div id="accueilHeaderRight">
@@ -66,13 +68,13 @@
 
             <div id="accueilCours">
                 <div id="accueilCoursHeader">
-                    <div class="accueilBodyLabel"><span>Enseignements</span></div>
+                    <div class="accueilBodyLabel"><span><h2>Enseignements</h2></span></div>
                     <form action="" id="accueilCoursSearchbar">
-                        <input type="text">
+                        <input aria-label="barre de recherche" type="text">
                         <div id="searchCoursLogo"><img src="./svg/search.svg" alt=""></div>
                     </form>
                     <form action="">
-                        <select name="" id="accueilCoursSelect">
+                        <select name="" id="accueilCoursSelect" aria-label="Sélectionner la compétence">
                             <option disabled selected value="">Compétences</option>
                             <option value="">Développer</option>
                             <option value="">Entreprendre</option>
@@ -304,7 +306,7 @@
             </div>
 
             <div id="accueilActualite">
-                <div id="accueilActualiteHeader">Actualités</div>
+                <div id="accueilActualiteHeader"><h2>Actualités</h2></div>
                 <div id="accueilActualiteWrapper">
 
                     <div class="div1 actualiteTemplate">
@@ -428,7 +430,7 @@
                     </div>
                 </a>
 
-                <a href="./crous.php">
+                <a href="./crous.php" aria-label="Vers le crous">
                     <div id="accueilAsideWidgetThree"></div>
                 </a>
 

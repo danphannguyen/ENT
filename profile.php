@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <title>Document</title>
+    <title>ENT | Profile</title>
 </head>
 
 <body>
@@ -106,7 +106,7 @@
                 </div>
 
                 <button id="userPhotoButton" class="profileBodyEdit">
-                    <img src="./svg/edit.svg" alt="">
+                    <img src="./svg/edit.svg" alt="changer votre informations">
                 </button>
 
                 <div id="profileInfo1">
@@ -158,7 +158,7 @@
                 </div>
 
                 <button id="userInformationButton" class="profileBodyEdit">
-                    <img src="./svg/edit.svg" alt="">
+                    <img src="./svg/edit.svg" alt="changer votre photo de profile">
                 </button>
 
                 <div id="profileInfo2">
@@ -395,7 +395,7 @@
 
                         <div class="profilInputContainer confirmPasswordContainer">
                             <label for="confirmNewPassword">Confirmer le mot de passe:</label>
-                            <input type="password" id="confirmNewPassword">
+                            <input type="password" id="confirmNewPassword" name="confirmNewPassword" aria-label="Confirmer votre mdp">
                         </div>
 
                         <div class="profilInputContainer">

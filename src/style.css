@@ -98,7 +98,7 @@ nav {
 nav a {
   color: var(--clr-text);
   font-family: 'Inter', sans-serif;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -946,6 +946,11 @@ nav a:hover {
   font-weight: 600;
 }
 
+#accueilSection h2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 #accueilBodyContainer {
   width: 100%;
   display: flex;
@@ -1124,7 +1129,7 @@ nav a:hover {
 #accueilHeader {
   width: 100%;
   height: 14vh;
-  background-image: url(../img/accueilHeaderBg.png);
+  background-image: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(../img/accueilHeaderBg.png);
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 16px;
@@ -1138,7 +1143,7 @@ nav a:hover {
   color: var(--clr-forground2);
 }
 
-#accueilHeaderLeft {
+#accueilHeaderLeft h1{
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -1349,7 +1354,7 @@ th {
 }
 
 .ade th span {
-  color: #787878;
+  color: #6d6d6d;
   font-weight: 400;
 }
 

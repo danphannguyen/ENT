@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -64,11 +64,11 @@
                 <input type="hidden" name="action" value="login">
 
                 <div class="inputFormConnexion">
-                    <input type="email" name="mailLogin" id="mailConnexion" placeholder="Email" required>
+                    <input aria-label="email" type="email" name="mailLogin" id="mailConnexion" placeholder="Email" required>
                 </div>
 
                 <div class="inputFormConnexion">
-                    <input type="password" name="passwordLogin" id="passwordConnexion" placeholder="Mot de passe" required>
+                    <input aria-label="mot de passe" type="password" name="passwordLogin" id="passwordConnexion" placeholder="Mot de passe" required>
                     <div id="eyeButton">
                         <img id="eyeImg" src="./svg/show.svg" alt="">
                     </div>
