@@ -93,6 +93,7 @@ nav {
   padding: 1rem 1rem;
   border-radius: 0px 16px 16px 0px;
   filter: drop-shadow(0px 4px 35px rgba(0, 0, 0, 0.10));
+  min-width: 90px;
 }
 
 nav a {
@@ -1868,4 +1869,118 @@ th {
   width: 24vw;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+/* ========================MODULE======================== */
+
+.modules {
+  display: flex;
+  width: 100vw;
+  height: auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 50px 120px;
+}
+
+.matiere {
+  width: 25.3vw;
+  height: 45vh;
+  background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: #00000029 0px 4px 35px;
+}
+
+.module-header {
+  padding: 1.5rem;
+  background-image: url(../img/module-img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.module-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.module-header h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: lighter;
+}
+
+
+.annonce {
+  padding: 1.5rem;
+  border-bottom: solid 1px black;
+}
+
+.matiere p{
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: black;
+  font-weight: lighter;
+}
+
+.matiere a{
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: black;
+  font-weight: lighter;
+  text-decoration: underline !important;
+}
+
+.matiere a:hover{
+  cursor: pointer;
+  color: #250082;
+}
+
+.matiere li {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.matiere ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+
+.archiveBtn button{
+  background-color: #F2F2F2;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 1.6rem;
+  font-size: 1.2rem;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: #00000029 0px 4px 35px;
+  transition: all 0.2s ease-in-out;
+}
+
+.archiveBtn button:hover{
+  box-shadow: #00000048 0px 4px 35px;
+  scale: 0.95;
+}
+
+.archivebtn-container {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  padding: 30px;
+  display: flex;
+  justify-content: flex-end;
 }

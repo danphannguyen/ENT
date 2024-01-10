@@ -30,7 +30,7 @@
             <span>Calendrier</span>
         </div>
     </a>
-    <a href="#">
+    <a href="./cours.php">
         <div class="navIconContainer">
             <div class="navIconBg">
                 <img src="./svg/cours.svg" alt="">

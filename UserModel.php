@@ -444,3 +444,42 @@ function generateWidgetDiv($widgetUser)
                 </div>';
     }
 }
+
+//================= Fonction AFFICHER les cours =================
+
+
+function getMatieres($id_ext_promotions)
+{
+    $db = dbConnect();
+
+    $reqMatieres = $db->prepare('SELECT matiere.*, users.prenom_user, users.nom_user
+    FROM matiere
+    JOIN users ON matiere.ext_userProf = users.id_user
+    WHERE matiere.ext_promotion = :promotion;');
+    $reqMatieres->bindValue(":promotion", $id_ext_promotions, PDO::PARAM_STR);
+    $reqMatieres->execute();
+    return $reqMatieres->fetchAll();
+}
+
+function getCours($id_matiere)
+{
+    $db = dbConnect();
+
+    $reqCours = $db->prepare('SELECT * FROM cours WHERE ext_matiere = :matiere');
+    $reqCours->bindValue(":matiere", $id_matiere, PDO::PARAM_STR);
+    $reqCours->execute();
+    return $reqCours->fetchAll();
+}
+
+function getAllMatieres()
+{
+    $db = dbConnect();
+
+    $reqMatieres = $db->prepare('SELECT matiere.*, users.prenom_user, users.nom_user
+    FROM matiere
+    JOIN users ON matiere.ext_userProf = users.id_user');
+    $reqMatieres->execute();
+    return $reqMatieres->fetchAll();
+}
+
+
