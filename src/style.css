@@ -1067,7 +1067,7 @@ nav a:hover {
 }
 
 #accueilAsideWidgetThree {
-  background-image: url(../svg/crous.svg);
+  background-image: url(../svg/crousLogo.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1256,7 +1256,7 @@ nav a:hover {
   flex-direction: column;
   border-radius: 16px;
   gap: 1rem;
-  background-image: url(../img/cours.png);
+  background-image: url(../img/coursBg.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1685,4 +1685,187 @@ th {
   width: 2px;
   border-radius: 2px;
   background-color: var(--clr-text);
+}
+
+/* ========================DASHBOARD======================== */
+
+.dashboard-main {
+  padding: 3rem 8vw;
+  width: 100%;
+  height: auto;
+}
+
+.add-widget {
+  position: fixed;
+  right: 2%;
+  top: 75%;
+}
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: 1000;
+  padding: 10px;
+  display: none;
+}
+
+#modal-overlay.open {
+  display: block !important;
+}
+
+.modal-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 600px;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+  border-top: solid 40px #232323;
+}
+
+#modal-exit {
+  position: absolute;
+  top: -33px;
+  right: 8px;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.blue {
+  width: 600px;
+  height: 600px;
+  background-color: blue;
+  border-radius: 10px;
+}
+
+.modal-content h2 {
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  gap: 2rem;
+}
+
+.btn-container button {
+  padding: 2rem;
+  gap: 1rem;
+  border: none;
+  max-width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 15px;
+  transition: all 0.2s ease-in-out;
+  background-color: #D9D9D9;
+}
+
+.btn-container button:hover {
+  cursor: pointer;
+  scale: 0.95;
+  background-color: #C4C4C4;
+}
+
+#modalBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+#modalBtn:hover {
+  scale: 0.9;
+}
+
+
+/* All widget */
+
+.widgetContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.widget-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #232323;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.widget {
+  width: 25vw;
+  background-color: #F2F2F2;
+  border-radius: 15px;
+}
+
+.goto {
+  position: absolute;
+  margin-left: 24%;
+  margin-bottom: 4%;
+  transition: all 0.2s ease-in-out;
+}
+
+.goto:hover {
+  cursor: pointer;
+  scale: 0.95;
+}
+
+.widget-header h3{
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.widget-content img{
+    box-sizing: border-box;
+    max-width: 24vw;
+    padding: 5px;
+}
+
+.delete-widget:hover {
+  scale: 0.95;
+}
+
+.delete-widget {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  margin: 15px;
+}
+
+.widget-content {
+  background-color: #F2F2F2;
+  height: 47vh;
+  width: 24vw;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }

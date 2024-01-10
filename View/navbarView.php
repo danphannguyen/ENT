@@ -14,7 +14,7 @@
             <span>Accueil</span>
         </div>
     </a>
-    <a href="#">
+    <a href="./dashboard.php">
         <div class="navIconContainer">
             <div class="navIconBg">
                 <img src="./svg/dashboard.svg" alt="">
