@@ -1691,7 +1691,7 @@ th {
 /* ========================DASHBOARD======================== */
 
 .dashboard-main {
-  padding: 3rem 8vw;
+  padding: 3rem 8rem;
   width: 100%;
   height: auto;
 }
@@ -1823,8 +1823,13 @@ th {
 
 .widget {
   width: 25vw;
+  min-width: 300px;
   background-color: #F2F2F2;
   border-radius: 15px;
+}
+
+.widget-container {
+  min-width: 300px;
 }
 
 .goto {
@@ -1849,6 +1854,7 @@ th {
     box-sizing: border-box;
     max-width: 24vw;
     padding: 5px;
+    min-width: 300px;
 }
 
 .delete-widget:hover {
@@ -1869,6 +1875,7 @@ th {
   width: 24vw;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  min-width: 300px;
 }
 
 /* ========================MODULE======================== */

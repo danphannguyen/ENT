@@ -233,18 +233,15 @@ aside {
   box-shadow: 5px 5px 50px 6px rgba(0, 0, 0, 0.10);
 }
 
-.leftLogo {
-  width: 12px;
-}
-
-.rightLogo {
+.leftLogo, .rightLogo  {
+  transition: 0 ease;
   width: 12px;
 }
 
 .leftLogo:hover,
 .rightLogo:hover {
-  cursor: pointer;
-  width: 14px;
+  transition: all 0.3s ease;
+  scale: 1.3;
 }
 
 .footer h1 {
