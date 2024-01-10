@@ -321,9 +321,8 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="" aria-label="En savoir plus sur les évènements de l'iut">
+                            <a href="" aria-label="Les évènements de l'iut">
                                 <span>Découvrir plus</span>
-                                <img src="" alt="">
                             </a>
                         </div>
                     </div>
@@ -344,9 +343,8 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="" aria-label="En savoir plus sur les sports a l'IUT">
+                            <a href="" aria-label="Les sports a l'IUT">
                                 <span>Découvrir plus</span>
-                                <img src="" alt="">
                             </a>
                         </div>
                     </div>
@@ -367,9 +365,8 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="" aria-label="En savoir plus sur la cantine">
+                            <a href="" aria-label="La cantine">
                                 <span>Découvrir plus</span>
-                                <img src="" alt="">
                             </a>
                         </div>
                     </div>
@@ -390,9 +387,8 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="" aria-label="En savoir plus sur la vie de l'IUT">
+                            <a href="" aria-label="La vie de l'IUT">
                                 <span>Découvrir plus</span>
-                                <img src="" alt="">
                             </a>
                         </div>
                     </div>
