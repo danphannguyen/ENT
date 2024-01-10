@@ -1884,6 +1884,7 @@ th {
 
 .matiere {
   width: 25.3vw;
+  min-width: 250px;
   height: 45vh;
   background-color: #F2F2F2;
   display: flex;
