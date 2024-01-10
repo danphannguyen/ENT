@@ -9,7 +9,7 @@
     <a href="./accueil.php">
         <div class="navIconContainer">
             <div class="navIconBg">
-                <img src="./svg/accueil.svg" alt="">
+                <img src="./svg/accueil.svg" alt="Lien vers l'accueil">
             </div>
             <span>Accueil</span>
         </div>
@@ -17,7 +17,7 @@
     <a href="./dashboard.php">
         <div class="navIconContainer">
             <div class="navIconBg">
-                <img src="./svg/dashboard.svg" alt="">
+                <img src="./svg/dashboard.svg" alt="Lien vers le dashboard">
             </div>
             <span>Dashboard</span>
         </div>
@@ -25,7 +25,7 @@
     <a href="./ade.php">
         <div class="navIconContainer">
             <div class="navIconBg">
-                <img src="./svg/calendirer.svg" alt="">
+                <img src="./svg/calendirer.svg" alt="Lien vers le calendrier">
             </div>
             <span>Calendrier</span>
         </div>
@@ -33,7 +33,7 @@
     <a href="#">
         <div class="navIconContainer">
             <div class="navIconBg">
-                <img src="./svg/cours.svg" alt="">
+                <img src="./svg/cours.svg" alt="Lien vers les cours">
             </div>
             <span>Cours</span>
         </div>
@@ -41,7 +41,7 @@
     <a href="#">
         <div class="navIconContainer">
             <div class="navIconBg">
-                <img src="./svg/chat.svg" alt="">
+                <img src="./svg/chat.svg" alt="Liens vers le chat">
             </div>
             <span>Chat</span>
         </div>

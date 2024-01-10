@@ -321,7 +321,7 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="">
+                            <a href="" aria-label="En savoir plus sur les évènements de l'iut">
                                 <span>Découvrir plus</span>
                                 <img src="" alt="">
                             </a>
@@ -344,7 +344,7 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="">
+                            <a href="" aria-label="En savoir plus sur les sports a l'IUT">
                                 <span>Découvrir plus</span>
                                 <img src="" alt="">
                             </a>
@@ -367,7 +367,7 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="">
+                            <a href="" aria-label="En savoir plus sur la cantine">
                                 <span>Découvrir plus</span>
                                 <img src="" alt="">
                             </a>
@@ -390,7 +390,7 @@
                             <p>Lorem ipsum dolor sit amet, salut sal consectetur adipiscing elit. Duis sed tempus metus, a tincidunt urna. Cras quam purus, hendrerit attali ante quis, porttitor pulvinar veli glimp </p>
                         </div>
                         <div class="actualiteFooter">
-                            <a href="">
+                            <a href="" aria-label="En savoir plus sur la vie de l'IUT">
                                 <span>Découvrir plus</span>
                                 <img src="" alt="">
                             </a>
@@ -411,7 +411,7 @@
                     <div>
                         <span>TP B</span>
                         <span>
-                            <img src="./svg/ping.svg" alt="">
+                            <img src="./svg/ping.svg" alt="Lieu du cours :">
                             IUC 126
                         </span>
                     </div>
