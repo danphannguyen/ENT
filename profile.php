@@ -60,6 +60,7 @@
 
                 case 'logout':
                     // Si c'est une déconnexion, on unset les variables de session + session destroy + redirection vers la page de connexion
+                    userOffline($_SESSION['id']);
                     unset(
                         $_SESSION['id'],
                         $_SESSION['role'],

@@ -523,3 +523,25 @@ function getAllMatieres()
     $reqMatieres->execute();
     return $reqMatieres->fetchAll();
 }
+
+//================= Fonction le chat =================
+
+function userOnline ($id_user){
+
+    $db = dbConnect();
+
+    $query = "UPDATE users SET status = 'En ligne' WHERE id_user = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+    $stmt->execute();
+}
+
+function userOffline ($id_user){
+
+    $db = dbConnect();
+
+    $query = "UPDATE users SET status = 'Hors ligne' WHERE id_user = :id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(":id", $id_user, PDO::PARAM_STR);
+    $stmt->execute();
+}

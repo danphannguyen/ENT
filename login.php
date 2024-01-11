@@ -45,6 +45,7 @@
 
                 // Si la connexion est réussie et que l'id est set on redirige vers l'accueil
                 if($result == "Connexion réussie" && isset($_SESSION['id'])) {
+                    userOnline($_SESSION['id']);
                     header('Location: accueil.php');
                 }
 

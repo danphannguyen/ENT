@@ -1,6 +1,8 @@
 # ENT
 
-Fontionnalités Dan Phan Nguyen :
+
+
+Fontionnalités ENT :
 ==== login.php ====
 - Connexion
 - Affichage de message d'erreur en cas de problème

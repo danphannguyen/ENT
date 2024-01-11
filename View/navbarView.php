@@ -38,7 +38,7 @@
             <span>Cours</span>
         </div>
     </a>
-    <a href="#">
+    <a href="./rechercheUser.php">
         <div class="navIconContainer">
             <div class="navIconBg">
                 <img src="./svg/chat.svg" alt="Liens vers le chat">
