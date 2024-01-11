@@ -487,7 +487,8 @@ function getMoyenneMatiere($id_ext_matiere, $id_ext_user)
 }
 
 
-//================= Fonction Matières =================
+//================= Fonction AFFICHER les cours =================
+
 
 function getMatieres($id_ext_promotions)
 {
@@ -510,4 +511,15 @@ function getCours($id_matiere)
     $reqCours->bindValue(":matiere", $id_matiere, PDO::PARAM_STR);
     $reqCours->execute();
     return $reqCours->fetchAll();
+}
+
+function getAllMatieres()
+{
+    $db = dbConnect();
+
+    $reqMatieres = $db->prepare('SELECT matiere.*, users.prenom_user, users.nom_user
+    FROM matiere
+    JOIN users ON matiere.ext_userProf = users.id_user');
+    $reqMatieres->execute();
+    return $reqMatieres->fetchAll();
 }
