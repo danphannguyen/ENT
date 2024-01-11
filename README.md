@@ -1,8 +1,24 @@
 # ENT
+////////// Hébergement : //////////
+1/ Récupérer le dossier.
+
+2/ Le déposer dans votre public_html puis le dézipper.
+
+3/ Créer une base de donnée ainsi qu'un utilisateur associée ayant les permissions admin.
+
+4/ Ouvrir PHPMyAdmin et importer le fichier SQL dans votre base de donnée.
+
+5/ Remplacer les champs d'identifications dans la fonction dbConnect() avec ceux créer lors de l'étape 3.
+
+6/ Créer un sous domaine ou un nouveau domaine en créeant une redirection vers votresite/ENT/login.html.
+
+7/ Testez votre site, si des erreurs PHP s'affiche cela veut dire que la base de donnée est mal connecté.
+    Il faut donc reprendre a partir de l'étape 3. 
+
+8/ Si vous êtes arrivé ici c'est que tout c'est bien passé ! Vous pouvez maintenant profitez des différentes fonctionnalitées.
 
 
-
-Fontionnalités ENT :
+////////// Fontionnalités ENT : //////////
 ==== login.php ====
 - Connexion
 - Affichage de message d'erreur en cas de problème
