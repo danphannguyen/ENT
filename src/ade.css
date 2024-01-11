@@ -98,7 +98,7 @@ nav {
 nav a {
   color: var(--clr-text);
   font-family: 'Inter', sans-serif;
-  font-size: 0.625rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -176,6 +176,16 @@ nav a:hover {
 .navIconContainer:hover img {
   filter: invert(1);
 }
+
+.BoSubmit {
+  border: none;
+  background: none;
+}
+
+.BoSubmit:hover {
+  cursor: pointer;
+}
+
 
 /* ==== PAGE ADE ==== */
 

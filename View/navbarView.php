@@ -1,7 +1,7 @@
 <nav>
 <div class="navTop">
     <div class="navUnivLogo">
-        <img id="navIconLogo" src="./svg/SymbLogo.svg" alt="">
+        <img id="navIconLogo" src="./svg/symbLogo.svg" alt="">
     </div>
 </div>
 
