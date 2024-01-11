@@ -17,7 +17,7 @@ if (isset($_SESSION['id'])) {
 
     if ($query->rowCount() > 0) {
         while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-            if ($row['outgoing_msg_id'] === intval($outgoing_id)) {
+            if ($row['outgoing_msg_id'] == $outgoing_id) {
                 $message = ($row['msg'] !== null) ? htmlspecialchars($row['msg'], ENT_QUOTES, 'UTF-8') : '';
                 $output .= '<div class="chat outgoing">
                             <div class="details message">
