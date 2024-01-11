@@ -26,8 +26,8 @@ $userWidgets = getUserWidgets($userId);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-
-    <title>Dashboard</title>
+    <link rel="icon" href="./svg/symbLogo.svg">
+    <title>ENT | Dashboard</title>
 </head>
 <body>
 

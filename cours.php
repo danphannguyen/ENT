@@ -18,7 +18,8 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <title>Document</title>
+    <link rel="icon" href="./svg/symbLogo.svg">
+    <title>ENT | Cours</title>
 </head>
 
 <body>

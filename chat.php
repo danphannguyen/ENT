@@ -11,6 +11,9 @@ if (isset($_SESSION['id'])) {
 }
 ?>
 
+<link rel="icon" href="./svg/symbLogo.svg">
+<title>ENT | Chat</title>
+
 <body>
 
     <div class="userSection">
