@@ -59,7 +59,7 @@ function selectWidget(widgetId) {
             widgetDiv.innerHTML = `
             <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <div class="widget-header">
-                <a class="goto" href="note.php"><img src="./svg/goto.svg" alt="link to"></a>
+                <a class="goto" href="./notes.php"><img src="./svg/goto.svg" alt="link to"></a>
                     <h3>Notes</h3>
                 </div>
                 <div class="widget-content">
@@ -71,7 +71,7 @@ function selectWidget(widgetId) {
             widgetDiv.innerHTML = `
             <button class="delete-widget" onclick="deleteWidget(this.parentNode)"><img src="./svg/trash.svg" alt="delete"></button>
                 <div class="widget-header">
-                <a class="goto" href="cours.php"><img src="./svg/goto.svg" alt="link to"></a>
+                <a class="goto" href="./cours.php"><img src="./svg/goto.svg" alt="link to"></a>
                     <h3>Cours</h3>
                 </div>
                 <div class="widget-content">

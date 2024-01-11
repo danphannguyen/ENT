@@ -17,6 +17,9 @@
         include('./UserModel.php');
 
         $result = getUserInfo($_SESSION['id']);
+
+        $matieres = getMatieres($result[0]['ext_promotions']);
+
     } else {
         header('Location: login.php');
     }
@@ -29,6 +32,7 @@
         '1' => 0, // Durées pour isjustifie = 1
         '2' => 0  // Durées pour isjustifie = 2
     );
+
     foreach ($abs as $ab) {
 
         // ==== Calcul des durées d'absence groupées par justification ====
@@ -86,40 +90,16 @@
 
                 <div id="accueilCoursWrapper">
 
-                    <div class="coursTemplateContainer">
-                        <div class="coursContentBg">
-                            <span>Deploiement de services</span>
-                            <img src="./svg/star.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="coursTemplateContainer">
-                        <div class="coursContentBg">
-                            <span>Deploiement de services</span>
-                            <img src="./svg/star.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="coursTemplateContainer">
-                        <div class="coursContentBg">
-                            <span>Deploiement de services</span>
-                            <img src="./svg/star.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="coursTemplateContainer">
-                        <div class="coursContentBg">
-                            <span>Deploiement de services</span>
-                            <img src="./svg/star.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="coursTemplateContainer">
-                        <div class="coursContentBg">
-                            <span>Deploiement de services</span>
-                            <img src="./svg/star.svg" alt="">
-                        </div>
-                    </div>
+                    <?php
+                    foreach ($matieres as $matiere) {
+                        echo '<div class="coursTemplateContainer">';
+                        echo '<div class="coursContentBg">';
+                        echo '<span>' . $matiere['nom_matiere'] . '</span>';
+                        echo '<img src="./svg/star.svg" alt="">';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
 
                 </div>
             </div>

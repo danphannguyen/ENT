@@ -6,7 +6,22 @@ Fontionnalités Dan Phan Nguyen :
 - Affichage de message d'erreur en cas de problème
 - Possibilité d'afficher ou de cacher le mdp
 
-==== index.php ====
+==== accueil.php ====
+- accès au crous via le widget a droite
+- accès à l'ADE avec le widget a droite
+- accès et affichage des heures d'absences a droite
+- affichage des notes sur le "voir plus" lors du scroll
+- affichage des différents cours
+
+==== dashboard.php ====
+- ajout de widget
+- suppression de widget
+- redirection vers les pages en questions
+
+==== cours.php ====
+- affichage des matieres selon la promotion
+- affichage des cours selon les matieres
+- boutons archives des cours pour visualiser tout les cours
 
 ==== profile.php ====
 - Affichage des informations liées au compte
