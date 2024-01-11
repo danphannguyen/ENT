@@ -1,5 +1,5 @@
 <?php
-require_once 'usermodel.php';
+require_once './UserModel.php';
 
 if (isset($_GET['user_id']) && isset($_GET['widget_id'])) {
     $userId = $_GET['user_id'];
