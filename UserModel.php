@@ -445,6 +445,50 @@ function generateWidgetDiv($widgetUser)
     }
 }
 
+//================= Fonction Notes =================
+
+function getNotes($id_ext_user)
+{
+    $db = dbConnect();
+
+    $reqNotes = $db->prepare('SELECT * FROM notes WHERE ext_user = :user');
+    $reqNotes->bindValue(":user", $id_ext_user, PDO::PARAM_STR);
+    $reqNotes->execute();
+    return $reqNotes->fetchAll();
+}
+
+function getMoyenneGenerale($id_ext_user)
+{
+    $db = dbConnect();
+
+    $reqMoyenne = $db->prepare('SELECT AVG(note) AS moyenne_notes FROM notes WHERE ext_user = :user');
+    $reqMoyenne->bindValue(":user", $id_ext_user, PDO::PARAM_STR);
+    $reqMoyenne->execute();
+    return $reqMoyenne->fetch(PDO::FETCH_ASSOC)['moyenne_notes'];
+}
+
+function getNameMatiere ($id_ext_matiere) {
+    $db = dbConnect();
+    $reqMatiere = $db->prepare('SELECT nom_matiere FROM matiere WHERE id_matiere = :matiere');
+    $reqMatiere->bindValue(":matiere", $id_ext_matiere, PDO::PARAM_STR);
+    $reqMatiere->execute();
+    return $reqMatiere->fetch(PDO::FETCH_ASSOC)['nom_matiere'];
+}
+
+function getMoyenneMatiere($id_ext_matiere, $id_ext_user)
+{
+    $db = dbConnect();
+
+    $reqMoyenne = $db->prepare('SELECT AVG(note) AS moyenne_notes FROM notes WHERE ext_matiere = :matiere AND ext_user = :id_utilisateur');
+    $reqMoyenne->bindValue(":matiere", $id_ext_matiere, PDO::PARAM_STR);
+    $reqMoyenne->bindValue(":id_utilisateur", $id_ext_user, PDO::PARAM_STR);
+    $reqMoyenne->execute();
+    return $reqMoyenne->fetch(PDO::FETCH_ASSOC)['moyenne_notes'];
+}
+
+
+//================= Fonction Matières =================
+
 function getMatieres($id_ext_promotions)
 {
     $db = dbConnect();

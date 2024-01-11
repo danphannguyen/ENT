@@ -18,6 +18,17 @@ Fontionnalités Dan Phan Nguyen :
 - Récap des heures d'absences selon des catégories
 - justification des absences directements en ligne
 
+==== notes.php ====
+- Visualisation des notes
+- de la date d'ajout des notes
+- de la moyenne générale
+- !! Lors du formulaires d'ajout des notes ne récupérer que les matieres concernés par la promotion de l'utilisateurs 
+- !!! les champs suivants ne sont pas fonctionnels
+    "Moy. classe : 14,50", 
+    "Moyenne générale classe : 14,50", 
+    "Moyenne la plus élevée : 19,33", 
+    "Moyenne la plus basse : 2,47"
+
 ==== backoffice.php ====
 - Affichage de tout les utilisateurs de la BDD
 - Création / Modification / Suppression d'utilisateurs

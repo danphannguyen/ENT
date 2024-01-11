@@ -299,7 +299,7 @@
                 </div>
 
                 <div id="accueilNoteFooter">
-                    <a href="" id="accueilNoteButton">
+                    <a href="./notes.php" id="accueilNoteButton" aria-label="Mes notes">
                         <span>Voir plus</span>
                     </a>
                 </div>
